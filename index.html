@@ -25,10 +25,23 @@
       <h1 class="splash-title">VAIGAI'S IKIGAI</h1>
       <p class="splash-sub">Where Purpose Meets Possibility — The Bimonthly Gazette</p>
       
-      <div class="splash-pretext-box">
-        <div style="font-family: var(--font-serif); font-size: 0.95rem; color: #e2e8f0; line-height: 1.65;">
+      <!-- Pretext-Inspired Dynamic Text Reflow Engine Demo (Direct Reference to pretextjs.dev) -->
+      <div class="splash-pretext-box" id="splash-pretext-container" title="Move cursor here to test Pretext real-time text reflow!">
+        <div class="pretext-canvas-header">
+          <span class="pretext-pill">✦ PRETEXT ENGINE ✦</span>
+          <span class="pretext-hint">Move cursor to see dynamic text reflow around obstacle</span>
+        </div>
+        <canvas id="pretext-splash-canvas" class="pretext-splash-canvas"></canvas>
+        <div class="pretext-canvas-fallback" id="pretext-fallback-text" style="display: none;">
           <strong style="color: var(--accent-light);">What is Vaigai's Ikigai?</strong><br>
           <em>The Vision that drives us. The Achievements that define us. The Intelligence that inspires us. The Greatness we nurture. The Academic aspirations we pursue. The Innovations through which we create impact.</em>
+        </div>
+        <div class="pretext-metrics-bar">
+          <span id="pretext-fps">⚡ 60 FPS Layout</span>
+          <span>•</span>
+          <span id="pretext-lines">Line Count: 5</span>
+          <span>•</span>
+          <span>Pure Arithmetic Canvas Reflow</span>
         </div>
       </div>
 
@@ -4944,6 +4957,9 @@
       <p id="lightbox-caption" class="lightbox-caption"></p>
     </div>
   </div>
+
+  <!-- Pretext Editorial Reading Spotlight (Subtle Interactive Cursor Luminary) -->
+  <div id="pretext-cursor-lens" class="pretext-cursor-lens"></div>
 
   <!-- Include Local St.PageFlip Library -->
   <script src="page-flip.browser.js"></script>

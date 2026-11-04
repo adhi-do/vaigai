@@ -127,7 +127,6 @@ html, body {
   filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.7));
   position: relative;
   z-index: 2;
-  animation: logoFloat 4s ease-in-out infinite;
 }
 
 .splash-badge {
@@ -165,14 +164,121 @@ html, body {
 }
 
 .splash-pretext-box {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: rgba(18, 24, 34, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.4);
   border-left: 3px solid var(--accent);
   padding: 16px 20px;
-  border-radius: 4px;
-  margin-bottom: 26px;
+  border-radius: 6px;
+  margin-bottom: 24px;
   text-align: left;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.pretext-canvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-family: var(--font-sans);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 8px;
+}
+
+.pretext-pill {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--accent-light);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.pretext-hint {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.pretext-splash-canvas {
+  width: 100%;
+  height: 155px;
+  display: block;
+  cursor: crosshair;
+  background: transparent;
+}
+
+.pretext-metrics-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(212, 175, 55, 0.2);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  color: #94a3b8;
+}
+
+.pretext-metrics-bar span:first-child {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+/* --- Pretext Editorial Reading Lens (Interactive Cursor Luminary) --- */
+.pretext-cursor-lens {
+  position: fixed;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.04) 45%, transparent 70%);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.12);
+  transform: translate(-50%, -50%);
+  transition: width 0.22s ease-out, height 0.22s ease-out, opacity 0.25s, border-color 0.2s;
+  z-index: 99999;
+  opacity: 0;
+  display: none;
+  mix-blend-mode: multiply;
+}
+
+body[data-theme="dark"] .pretext-cursor-lens {
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.06) 50%, transparent 70%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pretext-cursor-lens {
+    display: block;
+  }
+}
+
+.pretext-cursor-lens.active {
+  opacity: 1;
+}
+
+.pretext-cursor-lens.focus-text {
+  width: 220px;
+  height: 48px;
+  border-radius: 24px;
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.05) 55%, transparent 80%);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+/* Subtle typographic reading hover for paragraphs */
+.news-paragraph:hover, .editorial-cols p:hover {
+  background: rgba(212, 175, 55, 0.03);
+  border-radius: 2px;
+  transition: background 0.15s ease;
 }
 
 .splash-enter-btn {
@@ -236,11 +342,11 @@ html, body {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: transform 0.3s;
+  transition: opacity 0.2s;
 }
 
 .nav-brand:hover .nav-logo {
-  transform: scale(1.1) rotate(-3deg);
+  opacity: 0.85;
 }
 
 .nav-title {
@@ -542,18 +648,14 @@ html, body {
   transform: translateY(0);
 }
 
-@keyframes editorialSlideIn {
-  from {
-    transform: translateY(14px) scale(0.985);
-  }
-  to {
-    transform: translateY(0) scale(1);
-  }
-}
-
-.page.page-active .news-image-frame,
-.page.page-active .vairamuthu-frame {
-  animation: editorialSlideIn 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+/* ROCK-SOLID STABILITY: All images and frames are 100% static, motionless, and stable (No wiggling/shaking) */
+.page .news-image-frame,
+.page .news-img,
+.page .nptel-avatar,
+.page .vairamuthu-frame {
+  transform: none !important;
+  animation: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 /* ==========================================================================
@@ -715,15 +817,15 @@ html, body {
   box-shadow: 0 2px 7px rgba(0,0,0,0.06);
   position: relative;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   border-radius: 2px;
   display: flex;
   flex-direction: column;
 }
 
 .news-image-frame:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 .news-img {
@@ -1288,12 +1390,6 @@ html, body {
 @keyframes logoPulse {
   0% { transform: scale(0.95); opacity: 0.5; }
   100% { transform: scale(1.15); opacity: 0.85; }
-}
-
-@keyframes logoFloat {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-6px) rotate(1deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 /* ==========================================================================

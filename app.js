@@ -704,6 +704,298 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 250);
   });
 
+  // ==========================================================================
+  // PRETEXT.JS ENGINE — REAL-TIME DYNAMIC ARITHMETIC TEXT REFLOW DEMO
+  // (Direct reference to https://pretextjs.dev/ by Cheng Lou)
+  // ==========================================================================
+  const pretextCanvas = document.getElementById('pretext-splash-canvas');
+  const pretextContainer = document.getElementById('splash-pretext-container');
+  const pretextFpsEl = document.getElementById('pretext-fps');
+  const pretextLinesEl = document.getElementById('pretext-lines');
+  
+  if (pretextContainer) {
+    pretextContainer.addEventListener('click', (e) => {
+      // Don't auto-dismiss splash when interacting with the Pretext demo
+      e.stopPropagation();
+    });
+  }
+
+  if (pretextCanvas && pretextCanvas.getContext) {
+    const ctx = pretextCanvas.getContext('2d');
+    const manifestoText = "What is Vaigai's Ikigai? The Vision that drives us. The Achievements that define us. The Intelligence that inspires us. The Greatness we nurture. The Academic aspirations we pursue. The Innovations through which we create impact. Where Purpose Meets Possibility.";
+    const words = manifestoText.split(' ');
+    
+    // High-DPI Canvas scaling
+    let dpr = window.devicePixelRatio || 1;
+    let canvasW = 560;
+    let canvasH = 155;
+    
+    function resizePretextCanvas() {
+      if (!pretextCanvas) return;
+      const rect = pretextCanvas.getBoundingClientRect();
+      if (rect.width > 0) {
+        canvasW = rect.width;
+        canvasH = rect.height || 155;
+        pretextCanvas.width = canvasW * dpr;
+        pretextCanvas.height = canvasH * dpr;
+        ctx.scale(dpr, dpr);
+      }
+    }
+    resizePretextCanvas();
+
+    // PHASE 1: PREPARE (One-time Canvas measurement & caching — Zero DOM reads)
+    let cachedWords = [];
+    let spaceWidth = 5;
+    const fontStr = "500 14px 'Merriweather', Georgia, serif";
+
+    function prepareWords() {
+      ctx.font = fontStr;
+      spaceWidth = ctx.measureText(' ').width;
+      cachedWords = words.map(w => ({
+        text: w,
+        width: ctx.measureText(w).width,
+        isTitle: w.includes('Vaigai') || w.includes('Ikigai') || w.includes('Purpose') || w.includes('Possibility')
+      }));
+    }
+    prepareWords();
+
+    // Obstacle tracking (Cursor interaction)
+    let cursorX = -200;
+    let cursorY = -200;
+    let targetCursorX = -200;
+    let targetCursorY = -200;
+    let isMouseOver = false;
+    let obstacleRadius = 38;
+    let autoTime = 0;
+
+    pretextCanvas.addEventListener('mousemove', (e) => {
+      const rect = pretextCanvas.getBoundingClientRect();
+      targetCursorX = e.clientX - rect.left;
+      targetCursorY = e.clientY - rect.top;
+      isMouseOver = true;
+    });
+
+    pretextCanvas.addEventListener('mouseleave', () => {
+      isMouseOver = false;
+    });
+
+    // Touch support for Android mobile users
+    pretextCanvas.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        const rect = pretextCanvas.getBoundingClientRect();
+        targetCursorX = e.touches[0].clientX - rect.left;
+        targetCursorY = e.touches[0].clientY - rect.top;
+        isMouseOver = true;
+      }
+    }, { passive: true });
+
+    pretextCanvas.addEventListener('touchend', () => {
+      isMouseOver = false;
+    });
+
+    // FPS Counter metrics
+    let lastFrameTime = performance.now();
+    let frameCount = 0;
+    let fpsTimer = 0;
+
+    // PHASE 2: HOT-PATH REAL-TIME ARITHMETIC REFLOW (60 FPS Pure Math Layout)
+    function renderPretextFrame(now) {
+      if (!splash || splash.classList.contains('hidden')) {
+        // Stop animation loop once splash is closed to save battery/CPU
+        return;
+      }
+
+      const delta = (now - lastFrameTime) / 1000;
+      lastFrameTime = now;
+      frameCount++;
+      fpsTimer += delta;
+      if (fpsTimer >= 0.5) {
+        const currentFps = Math.round(frameCount / fpsTimer);
+        if (pretextFpsEl) pretextFpsEl.textContent = `⚡ ${currentFps} FPS Layout`;
+        frameCount = 0;
+        fpsTimer = 0;
+      }
+
+      // Smooth cursor lerp or idle gentle wandering
+      if (isMouseOver) {
+        cursorX += (targetCursorX - cursorX) * 0.22;
+        cursorY += (targetCursorY - cursorY) * 0.22;
+      } else {
+        autoTime += 0.025;
+        // Gentle figure-8 wandering in center
+        cursorX = (canvasW / 2) + Math.sin(autoTime) * (canvasW * 0.22);
+        cursorY = (canvasH / 2) + Math.cos(autoTime * 1.5) * 26;
+      }
+
+      ctx.clearRect(0, 0, canvasW, canvasH);
+
+      // Draw subtle glowing Pretext cursor obstacle orb
+      const grad = ctx.createRadialGradient(cursorX, cursorY, 0, cursorX, cursorY, obstacleRadius);
+      grad.addColorStop(0, 'rgba(212, 175, 55, 0.45)');
+      grad.addColorStop(0.5, 'rgba(212, 175, 55, 0.18)');
+      grad.addColorStop(1, 'rgba(212, 175, 55, 0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(cursorX, cursorY, obstacleRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Subtle ring
+      ctx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(cursorX, cursorY, obstacleRadius * 0.8, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Dynamic line-by-line reflow calculation
+      ctx.font = fontStr;
+      const padding = 12;
+      const lineH = 26;
+      let y = 24;
+      let wordIdx = 0;
+      let lineCount = 0;
+
+      while (wordIdx < cachedWords.length && y < canvasH + 10) {
+        lineCount++;
+        const dy = Math.abs(y - 6 - cursorY);
+        
+        if (dy < obstacleRadius) {
+          // Obstacle cuts through this line! Compute available left/right corridors
+          const dx = Math.sqrt(obstacleRadius * obstacleRadius - dy * dy) + 12;
+          const leftStart = padding;
+          const leftEnd = Math.max(leftStart, cursorX - dx);
+          const rightStart = Math.min(canvasW - padding, cursorX + dx);
+          const rightEnd = canvasW - padding;
+
+          const leftCorridor = leftEnd - leftStart;
+          const rightCorridor = rightEnd - rightStart;
+
+          // Fill left corridor if wide enough
+          if (leftCorridor > 60) {
+            let curX = leftStart;
+            while (wordIdx < cachedWords.length) {
+              const item = cachedWords[wordIdx];
+              if (curX + item.width <= leftEnd) {
+                ctx.fillStyle = item.isTitle ? '#fbbf24' : '#e2e8f0';
+                ctx.fillText(item.text, curX, y);
+                curX += item.width + spaceWidth;
+                wordIdx++;
+              } else {
+                break;
+              }
+            }
+          }
+
+          // Fill right corridor if wide enough
+          if (rightCorridor > 60) {
+            let curX = rightStart;
+            while (wordIdx < cachedWords.length) {
+              const item = cachedWords[wordIdx];
+              if (curX + item.width <= rightEnd) {
+                ctx.fillStyle = item.isTitle ? '#fbbf24' : '#e2e8f0';
+                ctx.fillText(item.text, curX, y);
+                curX += item.width + spaceWidth;
+                wordIdx++;
+              } else {
+                break;
+              }
+            }
+          }
+        } else {
+          // Unobstructed full-width line
+          const maxW = canvasW - padding * 2;
+          let curX = padding;
+          while (wordIdx < cachedWords.length) {
+            const item = cachedWords[wordIdx];
+            if (curX + item.width <= maxW + padding) {
+              ctx.fillStyle = item.isTitle ? '#fbbf24' : '#e2e8f0';
+              ctx.fillText(item.text, curX, y);
+              curX += item.width + spaceWidth;
+              wordIdx++;
+            } else {
+              break;
+            }
+          }
+        }
+        y += lineH;
+      }
+
+      if (pretextLinesEl) pretextLinesEl.textContent = `Line Count: ${lineCount}`;
+      requestAnimationFrame(renderPretextFrame);
+    }
+
+    requestAnimationFrame(renderPretextFrame);
+    window.addEventListener('resize', () => {
+      resizePretextCanvas();
+      prepareWords();
+    });
+  }
+
+  // ==========================================================================
+  // PRETEXT EDITORIAL READING SPOTLIGHT (Interactive Desktop Cursor Luminary)
+  // ==========================================================================
+  const cursorLens = document.getElementById('pretext-cursor-lens');
+  if (cursorLens) {
+    let targetX = -100, targetY = -100;
+    let currentX = -100, currentY = -100;
+    let isLensActive = false;
+
+    window.addEventListener('mousemove', (e) => {
+      // Don't show lens when splash is active or on touch devices
+      if (splash && !splash.classList.contains('hidden')) {
+        cursorLens.classList.remove('active');
+        return;
+      }
+
+      targetX = e.clientX;
+      targetY = e.clientY;
+
+      if (!isLensActive) {
+        isLensActive = true;
+        cursorLens.classList.add('active');
+      }
+
+      // Check if cursor is over editorial text or headings
+      const target = e.target;
+      const isText = target && (
+        target.matches('p, h1, h2, h3, h4, .news-paragraph, .editorial-cols p, .pull-quote, .byline-bar, .page-header, .page-footer') ||
+        target.closest('.editorial-cols, .news-paragraph, .pretext-card, .pull-quote')
+      );
+      
+      const isImage = target && (
+        target.matches('img, .news-img, .news-image-frame, .nptel-avatar, .vairamuthu-frame') ||
+        target.closest('.news-image-frame, .vairamuthu-frame, .nptel-grid')
+      );
+
+      if (isImage) {
+        // Keep images 100% clean, stable and unobscured
+        cursorLens.classList.remove('active');
+        cursorLens.classList.remove('focus-text');
+      } else if (isText) {
+        cursorLens.classList.add('active');
+        cursorLens.classList.add('focus-text');
+      } else {
+        cursorLens.classList.add('active');
+        cursorLens.classList.remove('focus-text');
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      isLensActive = false;
+      cursorLens.classList.remove('active');
+    });
+
+    function renderLens() {
+      if (isLensActive) {
+        currentX += (targetX - currentX) * 0.25;
+        currentY += (targetY - currentY) * 0.25;
+        cursorLens.style.left = `${currentX}px`;
+        cursorLens.style.top = `${currentY}px`;
+      }
+      requestAnimationFrame(renderLens);
+    }
+    requestAnimationFrame(renderLens);
+  }
+
   // --- Startup ---
   initPageFlip();
   updateUI(currentPage);
