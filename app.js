@@ -1,7 +1,7 @@
 /**
  * VAIGAI'S IKIGAI — Interactive Newspaper & Book Publication
- * Full-Screen Immersive Heyzine-Inspired Viewer Engine
- * Includes Kinetic Editorial Motion, Web Audio Synthesis, Responsive Sizing & Dual Modes
+ * High-End Heyzine-Inspired Viewer Engine
+ * Includes Proportional Aspect Ratio, Web Audio Synthesis, Responsive Sizing & Dual Modes
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeSelect = document.getElementById('theme-select');
   const btnFullscreen = document.getElementById('btn-fullscreen');
   const btnPrint = document.getElementById('btn-print');
+  
+  const originalFlipbookHTML = flipbookElement ? flipbookElement.innerHTML : '';
   
   const btnZoomIn = document.getElementById('btn-zoom-in');
   const btnZoomOut = document.getElementById('btn-zoom-out');
@@ -153,40 +155,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Dynamic Screen-Filling Dimension Calculator (Heyzine Inspired) ---
+  // --- Dynamic Dimension Calculator (Heyzine Proportional Sizing & Android Optimized) ---
   function getBookDimensions() {
     const isMobile = window.innerWidth < 1024;
-    const availW = window.innerWidth - (isMobile ? 12 : 36);
-    // Height available between 44px top navbar and 40px bottom dock
-    const availH = window.innerHeight - 84;
     
     if (isMobile) {
-      // Mobile Single Page Portrait: Fills ~95% width and height
-      const targetW = Math.min(availW, 600);
-      const targetH = Math.min(availH, targetW * 1.414);
+      // Mobile Single Page Portrait (Android & iPhone Touchscreen Optimized)
+      const availW = window.innerWidth - 16;
+      const availH = window.innerHeight - 88; // Space between 44px top navbar and 40px bottom dock
+      
+      // Target width fills ~96% of screen width (capped at 520px)
+      let targetW = Math.min(availW, 520);
+      
+      // Classic magazine ratio ~ 1 : 1.414 (A4)
+      let targetH = Math.floor(targetW * 1.414);
+      // Ensure comfortable vertical clearance so top and bottom edges are never clipped!
+      if (targetH > Math.floor(availH * 0.90)) {
+        targetH = Math.floor(availH * 0.90);
+        targetW = Math.floor(targetH / 1.414);
+      }
+      
       return { 
-        width: Math.floor(targetW), 
-        height: Math.floor(targetH), 
+        width: Math.max(targetW, 280), 
+        height: Math.max(targetH, 400), 
         isPortrait: true 
       };
     } else {
-      // Desktop Two-Page Spread: Fills ~92% - 95% of viewport height
-      let targetH = Math.floor(availH * 0.94);
-      let pageW = Math.floor(targetH / 1.414);
-      // Ensure two pages do not exceed available width
-      if (pageW * 2 > availW * 0.96) {
-        pageW = Math.floor((availW * 0.96) / 2);
-        targetH = Math.floor(pageW * 1.414);
+      // Desktop Two-Page Spread (Heyzine Proportions)
+      const availW = window.innerWidth - 60; // 30px breathing space on each side
+      const availH = window.innerHeight - 96; // Space between navbar and bottom dock
+      
+      // Target height: 86% of availH leaves ~35px-45px vertical clearance so the top and curling corners are NEVER cut!
+      let targetH = Math.min(Math.floor(availH * 0.86), 740);
+      // Classic magazine width-to-height ratio 1 : 1.38
+      let pageW = Math.floor(targetH / 1.38);
+      
+      // Ensure spread fits width
+      if (pageW * 2 > availW * 0.94) {
+        pageW = Math.floor((availW * 0.94) / 2);
+        targetH = Math.floor(pageW * 1.38);
       }
+      
       return { 
-        width: Math.max(pageW, 380), 
-        height: Math.max(targetH, 540), 
+        width: Math.max(pageW, 320), 
+        height: Math.max(targetH, 500), 
         isPortrait: false 
       };
     }
   }
 
-  // --- Trigger Kinetic Editorial & Pretext Animation ---
+  // --- Trigger Editorial Animation on Page Turn ---
   function triggerPageAnimation(pageNum) {
     const allPages = document.querySelectorAll('.page');
     allPages.forEach(p => p.classList.remove('page-active'));
@@ -219,17 +237,28 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (pageFlip) {
         pageFlip.destroy();
+        pageFlip = null;
       }
 
-      pageFlip = new PageFlipConstructor(flipbookElement, {
+      // Check if #flipbook element was removed from DOM by destroy() and restore it
+      let flipEl = document.getElementById('flipbook');
+      if (!flipEl) {
+        flipEl = document.createElement('div');
+        flipEl.id = 'flipbook';
+        flipEl.className = 'st-flipbook';
+        flipEl.innerHTML = originalFlipbookHTML;
+        flipbookViewport.appendChild(flipEl);
+      }
+
+      pageFlip = new PageFlipConstructor(flipEl, {
         width: width,
         height: height,
-        size: 'stretch',
+        size: 'fixed', // 'fixed' ensures crisp pixel alignment and prevents DOM rendering collapse
         minWidth: 280,
-        maxWidth: 800,
+        maxWidth: 750,
         minHeight: 400,
-        maxHeight: 1100,
-        maxShadowOpacity: 0.55,
+        maxHeight: 1050,
+        maxShadowOpacity: 0.5,
         showCover: true,
         mobileScrollSupport: true,
         usePortrait: isPortrait,
@@ -240,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clickEventForward: true
       });
 
-      const pages = document.querySelectorAll('.page');
+      const pages = flipEl.querySelectorAll('.page');
       pageFlip.loadFromHTML(pages);
 
       pageFlip.on('flip', (e) => {
@@ -600,16 +629,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Print Publication ---
-  if (btnPrint) {
-    btnPrint.addEventListener('click', () => {
-      switchToGazetteMode();
-      setTimeout(() => {
-        window.print();
-      }, 300);
-    });
-  }
-
   // --- Search Bar in Gazette Mode ---
   if (gazetteSearchInput) {
     gazetteSearchInput.addEventListener('input', (e) => {
@@ -625,14 +644,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Print Publication ---
+  if (btnPrint) {
+    btnPrint.addEventListener('click', () => {
+      switchToGazetteMode();
+      setTimeout(() => {
+        window.print();
+      }, 350);
+    });
+  }
+
   // --- Splash Screen Dismiss ---
-  if (btnEnterSplash) {
-    btnEnterSplash.addEventListener('click', () => {
+  function dismissSplash() {
+    if (splash && !splash.classList.contains('hidden')) {
       splash.classList.add('hidden');
       initAudioContext();
       playWelcomeChime();
       triggerPageAnimation(currentPage);
+    }
+  }
+
+  if (btnEnterSplash) {
+    btnEnterSplash.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dismissSplash();
     });
+  }
+
+  if (splash) {
+    splash.addEventListener('click', dismissSplash);
   }
 
   if (brandLink) {
@@ -641,13 +681,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Responsive Resize Handler ---
+  // --- Responsive Resize Handler (Android URL Bar & Orientation Optimized) ---
+  let lastWidth = window.innerWidth;
+  let lastPortrait = window.innerWidth < 1024;
   let resizeTimeout = null;
+
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      if (currentMode === 'flipbook' && pageFlip) {
-        initPageFlip();
+      const currentWidth = window.innerWidth;
+      const currentPortrait = currentWidth < 1024;
+      
+      // Only re-initialize if orientation mode changed or screen width changed substantially (> 50px)
+      // This prevents Android Chrome URL bar toggles from flickering or resetting the flipbook!
+      if (currentPortrait !== lastPortrait || Math.abs(currentWidth - lastWidth) > 50) {
+        lastWidth = currentWidth;
+        lastPortrait = currentPortrait;
+        if (currentMode === 'flipbook') {
+          initPageFlip();
+        }
       }
     }, 250);
   });
