@@ -72,41 +72,12 @@ html, body {
   font-size: 13.5px;
 }
 
-/* --- Pretext Splash Welcome Screen --- */
-#pretext-splash {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: radial-gradient(circle at center, #1b2330 0%, #0a0d13 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  color: #f0f6fc;
-  text-align: center;
-  transition: opacity 0.75s ease, visibility 0.75s ease;
-}
-
-#pretext-splash.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.splash-content {
-  max-width: 680px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: splashFadeIn 0.85s ease-out;
-}
-
+/* --- Institutional College Crest Framing --- */
 .splash-logo-wrapper {
   position: relative;
   width: 130px;
   height: 90px;
-  margin-bottom: 18px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,164 +85,18 @@ html, body {
 
 .splash-logo-glow {
   position: absolute;
-  inset: -14px;
+  inset: -10px;
   background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
   border-radius: 50%;
-  animation: logoPulse 3s infinite alternate;
 }
 
 .splash-logo {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
   position: relative;
   z-index: 2;
-}
-
-.splash-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 14px;
-  background: rgba(212, 175, 55, 0.15);
-  border: 1px solid var(--accent);
-  color: var(--accent-light);
-  border-radius: 20px;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-
-.splash-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  color: #ffffff;
-  letter-spacing: 3px;
-  margin-bottom: 6px;
-  font-weight: 700;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
-}
-
-.splash-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1rem, 2.5vw, 1.35rem);
-  color: var(--accent-light);
-  margin-bottom: 20px;
-}
-
-.splash-pretext-box {
-  background: rgba(18, 24, 34, 0.75);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-left: 3px solid var(--accent);
-  padding: 16px 20px;
-  border-radius: 6px;
-  margin-bottom: 24px;
-  text-align: left;
-  backdrop-filter: blur(12px);
-  width: 100%;
-  max-width: 640px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  position: relative;
-  overflow: hidden;
-}
-
-.pretext-canvas-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-family: var(--font-sans);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-  padding-bottom: 8px;
-}
-
-.pretext-pill {
-  background: rgba(212, 175, 55, 0.2);
-  color: var(--accent-light);
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  letter-spacing: 1.5px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 12px;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-}
-
-.pretext-hint {
-  font-size: 0.68rem;
-  color: #94a3b8;
-  font-style: italic;
-}
-
-.pretext-splash-canvas {
-  width: 100%;
-  height: 155px;
-  display: block;
-  cursor: crosshair;
-  background: transparent;
-}
-
-.pretext-metrics-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(212, 175, 55, 0.2);
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
-  color: #94a3b8;
-}
-
-.pretext-metrics-bar span:first-child {
-  color: #4ade80;
-  font-weight: 600;
-}
-
-/* --- Pretext Editorial Reading Lens (Interactive Cursor Luminary) --- */
-.pretext-cursor-lens {
-  position: fixed;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.04) 45%, transparent 70%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.12);
-  transform: translate(-50%, -50%);
-  transition: width 0.22s ease-out, height 0.22s ease-out, opacity 0.25s, border-color 0.2s;
-  z-index: 99999;
-  opacity: 0;
-  display: none;
-  mix-blend-mode: multiply;
-}
-
-body[data-theme="dark"] .pretext-cursor-lens {
-  mix-blend-mode: screen;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.06) 50%, transparent 70%);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .pretext-cursor-lens {
-    display: block;
-  }
-}
-
-.pretext-cursor-lens.active {
-  opacity: 1;
-}
-
-.pretext-cursor-lens.focus-text {
-  width: 220px;
-  height: 48px;
-  border-radius: 24px;
-  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.05) 55%, transparent 80%);
-  border-color: rgba(212, 175, 55, 0.5);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
 }
 
 /* Subtle typographic reading hover for paragraphs */
@@ -279,31 +104,6 @@ body[data-theme="dark"] .pretext-cursor-lens {
   background: rgba(212, 175, 55, 0.03);
   border-radius: 2px;
   transition: background 0.15s ease;
-}
-
-.splash-enter-btn {
-  background: linear-gradient(135deg, #d4af37 0%, #a87618 100%);
-  color: #0b0f15;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 13px 34px;
-  border: none;
-  border-radius: 28px;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
-  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.splash-enter-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.5);
-  filter: brightness(1.1);
 }
 
 /* --- Slim Top Navigation Bar (Heyzine Style) --- */
@@ -613,8 +413,8 @@ body[data-theme="dark"] .pretext-cursor-lens {
   color: var(--text-headline);
 }
 
-/* Watermarked Background Pretext */
-.pretext-watermark {
+/* Watermarked Background */
+.page-watermark {
   position: absolute;
   top: 48%;
   left: 50%;
@@ -640,7 +440,8 @@ body[data-theme="dark"] .pretext-cursor-lens {
 .page .nptel-grid, 
 .page .vairamuthu-frame,
 .page .editorial-cols, 
-.page .pretext-card, 
+.page .editorial-card,
+ 
 .page .headline-lead, 
 .page .pull-quote, 
 .page .news-table-wrapper {
@@ -884,8 +685,8 @@ body[data-theme="dark"] .pretext-cursor-lens {
   background: rgba(212, 175, 55, 0.06);
 }
 
-/* Pretext Mission Cards */
-.pretext-card {
+/* Editorial Mission & Foundation Cards */
+.editorial-card {
   background: #ffffff;
   border: 1px solid var(--paper-border);
   padding: 12px 14px;
@@ -893,7 +694,7 @@ body[data-theme="dark"] .pretext-cursor-lens {
   margin: 8px 0;
 }
 
-.pretext-item {
+.editorial-item {
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -901,7 +702,7 @@ body[data-theme="dark"] .pretext-cursor-lens {
   font-size: 0.8rem;
 }
 
-.pretext-letter {
+.editorial-letter {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
@@ -1450,7 +1251,7 @@ body[data-theme="dark"] .pretext-cursor-lens {
     margin-bottom: 4px;
   }
 
-  .pretext-card, .editorial-action-plan {
+  .editorial-card, .editorial-action-plan {
     padding: 6px 8px;
     margin: 6px 0;
     font-size: 0.68rem;

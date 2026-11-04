@@ -14,44 +14,6 @@
 </head>
 <body data-theme="newsprint">
 
-  <!-- Splash Screen / Pretext Welcome Overlay -->
-  <div id="pretext-splash">
-    <div class="splash-content">
-      <div class="splash-logo-wrapper">
-        <div class="splash-logo-glow"></div>
-        <img src="logo.png" alt="Vaigai College Logo" class="splash-logo">
-      </div>
-      <div class="splash-badge">✦ VOL. 01 • ISSUE 01 • JULY – AUGUST 2026 ✦</div>
-      <h1 class="splash-title">VAIGAI'S IKIGAI</h1>
-      <p class="splash-sub">Where Purpose Meets Possibility — The Bimonthly Gazette</p>
-      
-      <!-- Pretext-Inspired Dynamic Text Reflow Engine Demo (Direct Reference to pretextjs.dev) -->
-      <div class="splash-pretext-box" id="splash-pretext-container" title="Move cursor here to test Pretext real-time text reflow!">
-        <div class="pretext-canvas-header">
-          <span class="pretext-pill">✦ PRETEXT ENGINE ✦</span>
-          <span class="pretext-hint">Move cursor to see dynamic text reflow around obstacle</span>
-        </div>
-        <canvas id="pretext-splash-canvas" class="pretext-splash-canvas"></canvas>
-        <div class="pretext-canvas-fallback" id="pretext-fallback-text" style="display: none;">
-          <strong style="color: var(--accent-light);">What is Vaigai's Ikigai?</strong><br>
-          <em>The Vision that drives us. The Achievements that define us. The Intelligence that inspires us. The Greatness we nurture. The Academic aspirations we pursue. The Innovations through which we create impact.</em>
-        </div>
-        <div class="pretext-metrics-bar">
-          <span id="pretext-fps">⚡ 60 FPS Layout</span>
-          <span>•</span>
-          <span id="pretext-lines">Line Count: 5</span>
-          <span>•</span>
-          <span>Pure Arithmetic Canvas Reflow</span>
-        </div>
-      </div>
-
-      <button id="btn-enter-splash" class="splash-enter-btn">
-        <span>Open Interactive Gazette</span>
-        <span style="font-size: 1.15rem;">📖</span>
-      </button>
-    </div>
-  </div>
-
   <!-- Slim Top Navigation Bar -->
   <header class="top-navbar">
     <div class="nav-brand" id="brand-link" title="Return to Cover Page">
@@ -116,7 +78,7 @@
 
           <!-- PAGE 1: VAIGAI'S IKIGAI — Cover -->
           <div class="page cover-front" id="p1" data-density="hard" data-page="1">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">VAIGAI COLLEGE OF ENGINEERING</span>
@@ -152,7 +114,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin: 8px 0; background: #fffcf5; border-color: var(--accent);">
+    <div class="editorial-card" style="margin: 8px 0; background: #fffcf5; border-color: var(--accent);">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--primary); text-transform: uppercase; border-bottom: 1px solid var(--paper-border); padding-bottom: 3px; margin-bottom: 5px;">
             ✦ Editorial Board
         </div>
@@ -176,7 +138,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px; border-color: var(--accent);">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px; border-color: var(--accent);">
         <div style="font-family: var(--font-display); font-size: 0.8rem; font-weight: bold; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;">
             ★ In This Bimonthly Issue
         </div>
@@ -201,7 +163,7 @@
     
           <!-- PAGE 2: What is Vaigai's Ikigai? -->
           <div class="page " id="p2" data-density="soft" data-page="2">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">VAIGAI'S IKIGAI • JULY – AUGUST 2026</span>
@@ -213,29 +175,29 @@
     <h2 class="headline-lead">WHAT IS VAIGAI'S IKIGAI?</h2>
     <p class="headline-sub">The convergence of purpose, passion, vocation and societal contribution at Vaigai College of Engineering.</p>
 
-    <div class="pretext-card" style="background: linear-gradient(135deg, #fffcf7 0%, #ffffff 100%); border-left: 4px solid var(--accent); margin: 6px 0;">
-        <div class="pretext-item">
-            <span class="pretext-letter">V</span>
+    <div class="editorial-card" style="background: linear-gradient(135deg, #fffcf7 0%, #ffffff 100%); border-left: 4px solid var(--accent); margin: 6px 0;">
+        <div class="editorial-item">
+            <span class="editorial-letter">V</span>
             <div><strong>The Vision</strong> that drives our institutional mission and fuels boundless ambition.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">A</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">A</span>
             <div><strong>The Achievements</strong> that define our students and faculty on national platforms.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">I</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">I</span>
             <div><strong>The Intelligence</strong> that inspires technological innovation and critical inquiry.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">G</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">G</span>
             <div><strong>The Greatness</strong> we nurture through ethical leadership and character building.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">A</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">A</span>
             <div><strong>The Academic aspirations</strong> we relentlessly pursue for global competitiveness.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">I</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">I</span>
             <div><strong>The Innovations</strong> through which our engineers create meaningful societal impact.</div>
         </div>
     </div>
@@ -265,7 +227,7 @@
     
           <!-- PAGE 3: RACE Association Inauguration Ceremony -->
           <div class="page " id="p3" data-density="soft" data-page="3">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">DEPARTMENT OF CIVIL ENGINEERING</span>
@@ -307,7 +269,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="padding: 8px 12px; margin-top: 4px;">
+    <div class="editorial-card" style="padding: 8px 12px; margin-top: 4px;">
         <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: bold; color: var(--primary);">
             ✦ Association Objectives for 2026–2027
         </div>
@@ -327,7 +289,7 @@
     
           <!-- PAGE 4: RACE Student Leadership Investiture -->
           <div class="page " id="p4" data-density="soft" data-page="4">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">DEPARTMENT OF CIVIL ENGINEERING</span>
@@ -359,7 +321,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ RACE Executive Council Roll
         </div>
@@ -380,7 +342,7 @@
     
           <!-- PAGE 5: Mechanical Engineers Student Association Inaugural -->
           <div class="page " id="p5" data-density="soft" data-page="5">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">DEPARTMENT OF MECHANICAL ENGINEERING</span>
@@ -437,7 +399,7 @@
     
           <!-- PAGE 6: MESA Technical Initiatives & Competencies -->
           <div class="page " id="p6" data-density="soft" data-page="6">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">DEPARTMENT OF MECHANICAL ENGINEERING</span>
@@ -462,7 +424,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--accent);">
             ✦ MESA–2026 Key Initiatives
         </div>
@@ -482,7 +444,7 @@
     
           <!-- PAGE 7: Joint Workshop on Embedded Systems & IoT -->
           <div class="page " id="p7" data-density="soft" data-page="7">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">DEPARTMENTS OF ECE & EEE</span>
@@ -526,7 +488,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Coordinators: <strong>Dr. R. Sivaranjani</strong> (Principal & Prof/ECE), <strong>Mr. A. Shakil Ahmed</strong> (AP/ECE), and <strong>Ms. V. Saranya</strong> (AP/EEE).
         </div>
@@ -543,7 +505,7 @@
     
           <!-- PAGE 8: Hands-on Sensor Interfacing & Embedded Code -->
           <div class="page " id="p8" data-density="soft" data-page="8">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">DEPARTMENTS OF ECE & EEE</span>
@@ -568,7 +530,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Key Technical Skills Mastered
         </div>
@@ -588,7 +550,7 @@
     
           <!-- PAGE 9: FDC: 'IIC & YOU: Building an Innovation Culture' -->
           <div class="page " id="p9" data-density="soft" data-page="9">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">CELLS, CLUBS & INSTITUTIONAL ACTIVITIES</span>
@@ -623,7 +585,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>Dr. B. Sujatha</strong>, Dean Academics & <strong>Mr. K.M. Mohan</strong>, Management Representative.
         </div>
@@ -640,7 +602,7 @@
     
           <!-- PAGE 10: Faculty Innovation Framework & Incubation -->
           <div class="page " id="p10" data-density="soft" data-page="10">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">CELLS, CLUBS & INSTITUTIONAL ACTIVITIES</span>
@@ -680,7 +642,7 @@
     
           <!-- PAGE 11: Health Awareness Programme — 27 July 2026 -->
           <div class="page " id="p11" data-density="soft" data-page="11">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">YOUTH RED CROSS & RED RIBBON CLUB</span>
@@ -722,7 +684,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Coordinators: <strong>Mr. C. Balaguru</strong> (AP/Mech, RRC) & <strong>Mr. R. Rajendran</strong> (AP/Civil, YRC).
         </div>
@@ -739,7 +701,7 @@
     
           <!-- PAGE 12: Interactive Student Wellness Demonstrations -->
           <div class="page " id="p12" data-density="soft" data-page="12">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">YOUTH RED CROSS & RED RIBBON CLUB</span>
@@ -771,7 +733,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Key Wellness Takeaways for Students
         </div>
@@ -791,7 +753,7 @@
     
           <!-- PAGE 13: Blood Donation Camp — 31 July 2026 -->
           <div class="page " id="p13" data-density="soft" data-page="13">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">INSTITUTIONAL SOCIAL RESPONSIBILITY</span>
@@ -824,7 +786,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Camp Coordinated by <strong>Mr. C. Balaguru</strong> (RRC) & <strong>Mr. R. Rajendran</strong> (YRC).
         </div>
@@ -841,7 +803,7 @@
     
           <!-- PAGE 14: Honoring Student & Faculty Donors -->
           <div class="page " id="p14" data-density="soft" data-page="14">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">INSTITUTIONAL SOCIAL RESPONSIBILITY</span>
@@ -881,7 +843,7 @@
     
           <!-- PAGE 15: TNSACS State-Level Online Quiz — 12 August 2026 -->
           <div class="page " id="p15" data-density="soft" data-page="15">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">RED RIBBON CLUB (RRC)</span>
@@ -916,7 +878,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>Mr. C. Balaguru</strong>, AP/Mech & RRC Coordinator.
         </div>
@@ -933,7 +895,7 @@
     
           <!-- PAGE 16: Award Distribution & Knowledge Empowerment -->
           <div class="page " id="p16" data-density="soft" data-page="16">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">RED RIBBON CLUB (RRC)</span>
@@ -967,7 +929,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Competition Highlights & Metrics
         </div>
@@ -987,7 +949,7 @@
     
           <!-- PAGE 17: Mass Anti-Drug Pledge & Awareness — 11 August 2026 -->
           <div class="page " id="p17" data-density="soft" data-page="17">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">VCE ANTI-DRUG CLUB</span>
@@ -1020,7 +982,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Coordinators: <strong>Dr. R. Sivaranjani</strong> (Principal & Prof/ECE) & <strong>Dr. M. K. V. Karthikeyan</strong> (HoD/Mech).
         </div>
@@ -1037,7 +999,7 @@
     
           <!-- PAGE 18: Dr. Bharath Krishna Addresses Students on Substance Risks -->
           <div class="page " id="p18" data-density="soft" data-page="18">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">VCE ANTI-DRUG CLUB</span>
@@ -1086,7 +1048,7 @@
     
           <!-- PAGE 19: Entrepreneurship & Startup Awareness — 13 August 2026 -->
           <div class="page " id="p19" data-density="soft" data-page="19">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">ENTREPRENEURSHIP DEVELOPMENT CELL (EDC)</span>
@@ -1128,7 +1090,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Organized by EDC Coordinators: <strong>Mr. A. M. Milan</strong>, AP/Mech & <strong>Mr. R. Ravi Shankar</strong>, AP/Mech.
         </div>
@@ -1145,7 +1107,7 @@
     
           <!-- PAGE 20: From Engineering Lab to Commercial Enterprise -->
           <div class="page " id="p20" data-density="soft" data-page="20">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">ENTREPRENEURSHIP DEVELOPMENT CELL (EDC)</span>
@@ -1177,7 +1139,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Startup Incubator Framework
         </div>
@@ -1197,7 +1159,7 @@
     
           <!-- PAGE 21: 78th Independence Day Celebrations — 15 August 2026 -->
           <div class="page " id="p21" data-density="soft" data-page="21">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">NATIONAL SERVICE SCHEME (NSS)</span>
@@ -1245,7 +1207,7 @@
     
           <!-- PAGE 22: Anna University Rank Holders (2021-2025 Batch) -->
           <div class="page " id="p22" data-density="soft" data-page="22">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">UNIVERSITY ACADEMIC LAURELS</span>
@@ -1278,7 +1240,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px 12px;">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--accent); letter-spacing: 1px;">
             ★ ACADEMIC EXCELLENCE CITATION ★
         </div>
@@ -1298,7 +1260,7 @@
     
           <!-- PAGE 23: State Vairamuthu Speech Contest Sweep -->
           <div class="page " id="p23" data-density="soft" data-page="23">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">STATE-LEVEL STUDENT LAURELS</span>
@@ -1383,7 +1345,7 @@
     
           <!-- PAGE 24: NPTEL Toppers & Certifications (Oct 2025) -->
           <div class="page " id="p24" data-density="soft" data-page="24">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">NPTEL IIT MADRAS EXCELLENCE</span>
@@ -1474,7 +1436,7 @@
     
           <!-- PAGE 25: NPTEL Toppers & Certifications (April 2026) -->
           <div class="page " id="p25" data-density="soft" data-page="25">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">NPTEL IIT MADRAS EXCELLENCE</span>
@@ -1550,7 +1512,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; padding: 8px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; padding: 8px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--accent);">
             ✦ HEARTIEST COMMENDATIONS TO OUR NPTEL LAUREATES ✦
         </div>
@@ -1567,7 +1529,7 @@
     
           <!-- PAGE 26: Expert Talk: 'Success Is a Skill: Habits of High Performers' -->
           <div class="page " id="p26" data-density="soft" data-page="26">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">TRAINING & PLACEMENT CELL (TPC)</span>
@@ -1602,7 +1564,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>The Training & Placement Cell (TPC)</strong>.
         </div>
@@ -1619,7 +1581,7 @@
     
           <!-- PAGE 27: Interactive Coaching on Career Agility -->
           <div class="page " id="p27" data-density="soft" data-page="27">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">TRAINING & PLACEMENT CELL (TPC)</span>
@@ -1668,7 +1630,7 @@
     
           <!-- PAGE 28: Besant Technologies Recruitment Drive — 10 August 2026 -->
           <div class="page " id="p28" data-density="soft" data-page="28">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">CAMPUS RECRUITMENT DRIVES</span>
@@ -1701,7 +1663,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Drive Organized by <strong>Dr. R. Sivaranjani</strong>, Principal & Prof/ECE and <strong>Ms. R.J. Supriya</strong>, AP/ENG.
         </div>
@@ -1718,7 +1680,7 @@
     
           <!-- PAGE 29: 16 Students Selected for Besant JRIP Program -->
           <div class="page " id="p29" data-density="soft" data-page="29">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">CAMPUS RECRUITMENT DRIVES</span>
@@ -1743,7 +1705,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--accent);">
             ✦ HEARTIEST CONGRATULATIONS TO THE 16 BESANT ACHIEVERS! ✦
         </div>
@@ -1760,7 +1722,7 @@
     
           <!-- PAGE 30: Inovonz Engineerics Pooled Campus Drive — 18 August 2026 -->
           <div class="page " id="p30" data-density="soft" data-page="30">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">POOLED CAMPUS RECRUITMENT</span>
@@ -1793,7 +1755,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Drive Organized by <strong>Ms. V. Saranya</strong>, AP/EEE.
         </div>
@@ -1810,7 +1772,7 @@
     
           <!-- PAGE 31: Core Engineering Testing & Placement Preparedness -->
           <div class="page " id="p31" data-density="soft" data-page="31">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">POOLED CAMPUS RECRUITMENT</span>
@@ -1859,7 +1821,7 @@
     
           <!-- PAGE 32: Off-Campus Recruitment Drive: Newrta Solutions — 19 August 2026 -->
           <div class="page " id="p32" data-density="soft" data-page="32">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">OFF-CAMPUS RECRUITMENT</span>
@@ -1892,7 +1854,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Organized by <strong>Dr. R. Sivaranjani</strong>, Principal & Prof/ECE and <strong>Ms. R.J. Supriya</strong>, AP/ENG.
         </div>
@@ -1909,7 +1871,7 @@
     
           <!-- PAGE 33: Mr. S. Maadhesh Placed as Software Developer -->
           <div class="page " id="p33" data-density="soft" data-page="33">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">OFF-CAMPUS RECRUITMENT</span>
@@ -1943,7 +1905,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px;">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--accent);">
             ★ HEARTIEST CONGRATULATIONS TO MR. S. MAADHESH! ★
         </div>
@@ -1960,7 +1922,7 @@
     
           <!-- PAGE 34: TACT – Level 1 Recruitment Training — 20 August 2026 -->
           <div class="page " id="p34" data-density="soft" data-page="34">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">TRAINING & PLACEMENT CELL (TPC)</span>
@@ -1995,7 +1957,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>Dr. R. Sivaranjani</strong>, Principal & Prof/ECE and <strong>Ms. R.J. Supriya</strong>, AP/ENG.
         </div>
@@ -2012,7 +1974,7 @@
     
           <!-- PAGE 35: Faculty Upskilling & Professional Development -->
           <div class="page " id="p35" data-density="soft" data-page="35">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">FACULTY ACADEMIC PURSUITS</span>
@@ -2186,7 +2148,7 @@
     
           <!-- PAGE 36: 7 High-Impact Faculty Research Publications -->
           <div class="page " id="p36" data-density="soft" data-page="36">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">RESEARCH & SCHOLARLY PUBLICATIONS</span>
@@ -2276,7 +2238,7 @@
     
           <!-- PAGE 37: Institutional Colophon & Leadership Note -->
           <div class="page " id="p37" data-density="soft" data-page="37">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">VAIGAI COLLEGE OF ENGINEERING</span>
@@ -2297,7 +2259,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="font-size: 0.74rem; line-height: 1.6; margin-bottom: 8px;">
+    <div class="editorial-card" style="font-size: 0.74rem; line-height: 1.6; margin-bottom: 8px;">
         <div style="font-family: var(--font-display); font-size: 0.78rem; font-weight: bold; color: var(--primary); margin-bottom: 4px; text-transform: uppercase;">
             ✦ Institutional Acknowledgement
         </div>
@@ -2305,13 +2267,13 @@
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.72rem; margin-bottom: 8px;">
-        <div class="pretext-card" style="margin: 0; padding: 10px;">
+        <div class="editorial-card" style="margin: 0; padding: 10px;">
             <strong style="color: var(--accent);">Campus Coordinates:</strong><br>
             Vaigai College of Engineering<br>
             15-Acre Serene Green Campus,<br>
             Madurai – 625 106, Tamil Nadu.
         </div>
-        <div class="pretext-card" style="margin: 0; padding: 10px;">
+        <div class="editorial-card" style="margin: 0; padding: 10px;">
             <strong style="color: var(--accent);">Statutory Approvals:</strong><br>
             Approved by AICTE, New Delhi<br>
             Affiliated to Anna University, Chennai<br>
@@ -2334,7 +2296,7 @@
     
           <!-- PAGE 38: VAIGAI'S IKIGAI — Back Cover -->
           <div class="page cover-back" id="p38" data-density="hard" data-page="38">
-            <div class="pretext-watermark">IKIGAI</div>
+            <div class="page-watermark">IKIGAI</div>
             <div class="page-inner">
               <div class="page-header">
                 <span class="page-header-title">VAIGAI COLLEGE OF ENGINEERING</span>
@@ -2429,7 +2391,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin: 8px 0; background: #fffcf5; border-color: var(--accent);">
+    <div class="editorial-card" style="margin: 8px 0; background: #fffcf5; border-color: var(--accent);">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--primary); text-transform: uppercase; border-bottom: 1px solid var(--paper-border); padding-bottom: 3px; margin-bottom: 5px;">
             ✦ Editorial Board
         </div>
@@ -2453,7 +2415,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px; border-color: var(--accent);">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px; border-color: var(--accent);">
         <div style="font-family: var(--font-display); font-size: 0.8rem; font-weight: bold; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;">
             ★ In This Bimonthly Issue
         </div>
@@ -2482,29 +2444,29 @@
     <h2 class="headline-lead">WHAT IS VAIGAI'S IKIGAI?</h2>
     <p class="headline-sub">The convergence of purpose, passion, vocation and societal contribution at Vaigai College of Engineering.</p>
 
-    <div class="pretext-card" style="background: linear-gradient(135deg, #fffcf7 0%, #ffffff 100%); border-left: 4px solid var(--accent); margin: 6px 0;">
-        <div class="pretext-item">
-            <span class="pretext-letter">V</span>
+    <div class="editorial-card" style="background: linear-gradient(135deg, #fffcf7 0%, #ffffff 100%); border-left: 4px solid var(--accent); margin: 6px 0;">
+        <div class="editorial-item">
+            <span class="editorial-letter">V</span>
             <div><strong>The Vision</strong> that drives our institutional mission and fuels boundless ambition.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">A</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">A</span>
             <div><strong>The Achievements</strong> that define our students and faculty on national platforms.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">I</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">I</span>
             <div><strong>The Intelligence</strong> that inspires technological innovation and critical inquiry.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">G</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">G</span>
             <div><strong>The Greatness</strong> we nurture through ethical leadership and character building.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">A</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">A</span>
             <div><strong>The Academic aspirations</strong> we relentlessly pursue for global competitiveness.</div>
         </div>
-        <div class="pretext-item">
-            <span class="pretext-letter">I</span>
+        <div class="editorial-item">
+            <span class="editorial-letter">I</span>
             <div><strong>The Innovations</strong> through which our engineers create meaningful societal impact.</div>
         </div>
     </div>
@@ -2568,7 +2530,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="padding: 8px 12px; margin-top: 4px;">
+    <div class="editorial-card" style="padding: 8px 12px; margin-top: 4px;">
         <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: bold; color: var(--primary);">
             ✦ Association Objectives for 2026–2027
         </div>
@@ -2612,7 +2574,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ RACE Executive Council Roll
         </div>
@@ -2699,7 +2661,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--accent);">
             ✦ MESA–2026 Key Initiatives
         </div>
@@ -2755,7 +2717,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Coordinators: <strong>Dr. R. Sivaranjani</strong> (Principal & Prof/ECE), <strong>Mr. A. Shakil Ahmed</strong> (AP/ECE), and <strong>Ms. V. Saranya</strong> (AP/EEE).
         </div>
@@ -2789,7 +2751,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Key Technical Skills Mastered
         </div>
@@ -2836,7 +2798,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>Dr. B. Sujatha</strong>, Dean Academics & <strong>Mr. K.M. Mohan</strong>, Management Representative.
         </div>
@@ -2919,7 +2881,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Coordinators: <strong>Mr. C. Balaguru</strong> (AP/Mech, RRC) & <strong>Mr. R. Rajendran</strong> (AP/Civil, YRC).
         </div>
@@ -2960,7 +2922,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Key Wellness Takeaways for Students
         </div>
@@ -3005,7 +2967,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Camp Coordinated by <strong>Mr. C. Balaguru</strong> (RRC) & <strong>Mr. R. Rajendran</strong> (YRC).
         </div>
@@ -3081,7 +3043,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>Mr. C. Balaguru</strong>, AP/Mech & RRC Coordinator.
         </div>
@@ -3124,7 +3086,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Competition Highlights & Metrics
         </div>
@@ -3169,7 +3131,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Coordinators: <strong>Dr. R. Sivaranjani</strong> (Principal & Prof/ECE) & <strong>Dr. M. K. V. Karthikeyan</strong> (HoD/Mech).
         </div>
@@ -3261,7 +3223,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Organized by EDC Coordinators: <strong>Mr. A. M. Milan</strong>, AP/Mech & <strong>Mr. R. Ravi Shankar</strong>, AP/Mech.
         </div>
@@ -3302,7 +3264,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--primary);">
             ✦ Startup Incubator Framework
         </div>
@@ -3387,7 +3349,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px 12px;">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--accent); letter-spacing: 1px;">
             ★ ACADEMIC EXCELLENCE CITATION ★
         </div>
@@ -3635,7 +3597,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; padding: 8px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; padding: 8px;">
         <div style="font-family: var(--font-display); font-size: 0.74rem; font-weight: bold; color: var(--accent);">
             ✦ HEARTIEST COMMENDATIONS TO OUR NPTEL LAUREATES ✦
         </div>
@@ -3679,7 +3641,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>The Training & Placement Cell (TPC)</strong>.
         </div>
@@ -3762,7 +3724,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Drive Organized by <strong>Dr. R. Sivaranjani</strong>, Principal & Prof/ECE and <strong>Ms. R.J. Supriya</strong>, AP/ENG.
         </div>
@@ -3796,7 +3758,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; padding: 10px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; padding: 10px;">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--accent);">
             ✦ HEARTIEST CONGRATULATIONS TO THE 16 BESANT ACHIEVERS! ✦
         </div>
@@ -3838,7 +3800,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Drive Organized by <strong>Ms. V. Saranya</strong>, AP/EEE.
         </div>
@@ -3921,7 +3883,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Organized by <strong>Dr. R. Sivaranjani</strong>, Principal & Prof/ECE and <strong>Ms. R.J. Supriya</strong>, AP/ENG.
         </div>
@@ -3964,7 +3926,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px;">
+    <div class="editorial-card" style="margin-top: 6px; text-align: center; border-color: var(--accent); padding: 8px;">
         <div style="font-family: var(--font-display); font-size: 0.76rem; font-weight: bold; color: var(--accent);">
             ★ HEARTIEST CONGRATULATIONS TO MR. S. MAADHESH! ★
         </div>
@@ -4008,7 +3970,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="margin-top: 4px; padding: 8px 12px;">
+    <div class="editorial-card" style="margin-top: 4px; padding: 8px 12px;">
         <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
             Programme Coordinated by <strong>Dr. R. Sivaranjani</strong>, Principal & Prof/ECE and <strong>Ms. R.J. Supriya</strong>, AP/ENG.
         </div>
@@ -4286,7 +4248,7 @@
         </div>
     </div>
 
-    <div class="pretext-card" style="font-size: 0.74rem; line-height: 1.6; margin-bottom: 8px;">
+    <div class="editorial-card" style="font-size: 0.74rem; line-height: 1.6; margin-bottom: 8px;">
         <div style="font-family: var(--font-display); font-size: 0.78rem; font-weight: bold; color: var(--primary); margin-bottom: 4px; text-transform: uppercase;">
             ✦ Institutional Acknowledgement
         </div>
@@ -4294,13 +4256,13 @@
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.72rem; margin-bottom: 8px;">
-        <div class="pretext-card" style="margin: 0; padding: 10px;">
+        <div class="editorial-card" style="margin: 0; padding: 10px;">
             <strong style="color: var(--accent);">Campus Coordinates:</strong><br>
             Vaigai College of Engineering<br>
             15-Acre Serene Green Campus,<br>
             Madurai – 625 106, Tamil Nadu.
         </div>
-        <div class="pretext-card" style="margin: 0; padding: 10px;">
+        <div class="editorial-card" style="margin: 0; padding: 10px;">
             <strong style="color: var(--accent);">Statutory Approvals:</strong><br>
             Approved by AICTE, New Delhi<br>
             Affiliated to Anna University, Chennai<br>
@@ -4957,9 +4919,6 @@
       <p id="lightbox-caption" class="lightbox-caption"></p>
     </div>
   </div>
-
-  <!-- Pretext Editorial Reading Spotlight (Subtle Interactive Cursor Luminary) -->
-  <div id="pretext-cursor-lens" class="pretext-cursor-lens"></div>
 
   <!-- Include Local St.PageFlip Library -->
   <script src="page-flip.browser.js"></script>
