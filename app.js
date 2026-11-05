@@ -49,8 +49,20 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxImgFrame = document.getElementById('lightbox-img-frame');
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxCaptionHint = document.getElementById('lightbox-caption-hint');
   const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxToggleInfo = document.getElementById('lightbox-toggle-info');
+  const lightboxInfoBtnLabel = document.getElementById('lightbox-info-btn-label');
+  const lightboxJumpPage = document.getElementById('lightbox-jump-page');
+  const lightboxEventTag = document.getElementById('lightbox-tag-text');
+  const lightboxInfoDept = document.getElementById('lightbox-info-dept');
+  const lightboxInfoDate = document.getElementById('lightbox-info-date');
+  const lightboxInfoTitle = document.getElementById('lightbox-info-title');
+  const lightboxInfoByline = document.getElementById('lightbox-info-byline');
+  const lightboxInfoBody = document.getElementById('lightbox-info-body');
+  const lightboxContentContainer = document.getElementById('lightbox-content-container');
   
   const gazetteSearchInput = document.getElementById('gazette-search-input');
   
@@ -554,12 +566,186 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Lightbox Image Inspection ---
-  function openLightbox(imgSrc, captionText) {
+  // --- Fullscreen Poster & Broadside Viewer with Dynamic Event Details ---
+  let currentEventPage = null;
+
+  function extractEventData(sourceFrame) {
+    if (!sourceFrame) return null;
+    const container = sourceFrame.closest('.page') || sourceFrame.closest('.gazette-section') || sourceFrame.closest('article');
+    if (!container) return null;
+
+    let pageNum = container.dataset.page;
+    if (!pageNum && container.id) {
+      const match = container.id.match(/\d+/);
+      if (match) pageNum = match[0];
+    }
+    if (!pageNum) {
+      const pageNumEl = container.querySelector('.page-num');
+      if (pageNumEl) {
+        const match = pageNumEl.textContent.match(/\d+/);
+        if (match) pageNum = match[0];
+      }
+    }
+
+    let dept = '';
+    const deptEl = container.querySelector('.page-header-title') ||
+                   container.querySelector('.headline-section span:first-child') ||
+                   container.querySelector('.gazette-section-kicker');
+    if (deptEl) dept = deptEl.textContent.trim();
+
+    let dateText = '';
+    const dateEl = container.querySelector('.headline-tag') ||
+                   container.querySelector('.byline-date') ||
+                   container.querySelector('.gazette-section-date');
+    if (dateEl) dateText = dateEl.textContent.trim();
+
+    let headline = '';
+    const headlineEl = container.querySelector('.headline-lead') ||
+                       container.querySelector('.page-masthead-title') ||
+                       container.querySelector('h2') ||
+                       container.querySelector('h1') ||
+                       container.querySelector('h3');
+    if (headlineEl) headline = headlineEl.textContent.trim();
+
+    let byline = '';
+    const bylineEl = container.querySelector('.byline-bar') ||
+                     container.querySelector('.page-dateline');
+    if (bylineEl) byline = bylineEl.textContent.trim();
+
+    let bodyHTML = '';
+    const editorialCols = container.querySelector('.editorial-cols');
+    if (editorialCols) {
+      editorialCols.querySelectorAll('p').forEach(p => {
+        bodyHTML += `<p>${p.innerHTML}</p>`;
+      });
+    } else {
+      container.querySelectorAll('p').forEach(p => {
+        if (!p.closest('.news-caption') && !p.closest('.lightbox-content-container') && !p.closest('.page-footer')) {
+          bodyHTML += `<p>${p.innerHTML}</p>`;
+        }
+      });
+    }
+
+    const extraBlocks = container.querySelectorAll('.editorial-card, .takeaways-box, .news-table-wrapper, .pull-quote');
+    extraBlocks.forEach(block => {
+      if (!block.closest('.editorial-cols')) {
+        bodyHTML += block.outerHTML;
+      }
+    });
+
+    return {
+      page: pageNum ? parseInt(pageNum, 10) : null,
+      dept: dept || "VAIGAI'S IKIGAI GAZETTE",
+      date: dateText || "ACADEMIC ARCHIVES 2026",
+      headline: headline || "CAMPUS BROADCAST",
+      byline: byline || "",
+      bodyHTML: bodyHTML || "<p>Detailed editorial story available in the publication.</p>"
+    };
+  }
+
+  function setLightboxView(view) {
+    if (!lightboxModal) return;
+    lightboxModal.dataset.view = view;
+    if (view === 'details') {
+      if (lightboxToggleInfo) lightboxToggleInfo.classList.add('active');
+      if (lightboxInfoBtnLabel) lightboxInfoBtnLabel.textContent = 'Fullscreen Poster';
+      if (lightboxCaptionHint) {
+        lightboxCaptionHint.innerHTML = '<span>⛶ Click to expand fullscreen poster</span><span>▴</span>';
+      }
+    } else {
+      if (lightboxToggleInfo) lightboxToggleInfo.classList.remove('active');
+      if (lightboxInfoBtnLabel) lightboxInfoBtnLabel.textContent = 'Event Details';
+      if (lightboxCaptionHint) {
+        lightboxCaptionHint.innerHTML = '<span>ℹ️ Click to read the full event story & details</span><span>▾</span>';
+      }
+    }
+  }
+
+  function toggleLightboxView() {
+    if (!lightboxModal) return;
+    const currentView = lightboxModal.dataset.view || 'poster';
+    setLightboxView(currentView === 'poster' ? 'details' : 'poster');
+  }
+
+  function openLightbox(imgSrc, captionText, sourceFrame) {
     if (!lightboxModal) return;
     lightboxImg.src = imgSrc;
     lightboxCaption.textContent = captionText || '';
+
+    const eventData = extractEventData(sourceFrame);
+    if (eventData) {
+      currentEventPage = eventData.page;
+      if (lightboxEventTag) {
+        lightboxEventTag.textContent = `${eventData.dept} • ${eventData.date}`;
+      }
+      if (lightboxInfoDept) {
+        lightboxInfoDept.textContent = eventData.dept;
+      }
+      if (lightboxInfoDate) {
+        lightboxInfoDate.textContent = eventData.date;
+      }
+      if (lightboxInfoTitle) {
+        lightboxInfoTitle.textContent = eventData.headline;
+      }
+      if (lightboxInfoByline) {
+        lightboxInfoByline.textContent = eventData.byline;
+        lightboxInfoByline.style.display = eventData.byline ? 'flex' : 'none';
+      }
+      if (lightboxInfoBody) {
+        lightboxInfoBody.innerHTML = eventData.bodyHTML;
+      }
+      if (lightboxJumpPage) {
+        lightboxJumpPage.style.display = currentEventPage ? 'inline-flex' : 'none';
+        const jumpText = lightboxJumpPage.querySelector('.btn-text');
+        if (jumpText && currentEventPage) {
+          jumpText.textContent = `Page ${currentEventPage}`;
+        }
+      }
+    } else {
+      currentEventPage = null;
+      if (lightboxEventTag) lightboxEventTag.textContent = 'VAIGAI ARCHIVAL POSTER';
+      if (lightboxInfoDept) lightboxInfoDept.textContent = "VAIGAI'S IKIGAI";
+      if (lightboxInfoDate) lightboxInfoDate.textContent = 'SPECIAL EDITION';
+      if (lightboxInfoTitle) lightboxInfoTitle.textContent = captionText || 'Archival Broadside';
+      if (lightboxInfoByline) lightboxInfoByline.style.display = 'none';
+      if (lightboxInfoBody) lightboxInfoBody.innerHTML = `<p>${captionText || 'Archival image from Vaigai College of Engineering publication.'}</p>`;
+      if (lightboxJumpPage) lightboxJumpPage.style.display = 'none';
+    }
+
+    // Default to scaled fullscreen portrait poster view
+    setLightboxView('poster');
     lightboxModal.classList.add('open');
+  }
+
+  if (lightboxToggleInfo) {
+    lightboxToggleInfo.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleLightboxView();
+    });
+  }
+
+  if (lightboxCaptionHint) {
+    lightboxCaptionHint.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleLightboxView();
+    });
+  }
+
+  if (lightboxImgFrame) {
+    lightboxImgFrame.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleLightboxView();
+    });
+  }
+
+  if (lightboxJumpPage) {
+    lightboxJumpPage.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentEventPage) {
+        lightboxModal.classList.remove('open');
+        goToPage(currentEventPage);
+      }
+    });
   }
 
   if (lightboxClose) {
@@ -570,18 +756,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (lightboxModal) {
     lightboxModal.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) {
+      if (e.target === lightboxModal || e.target === lightboxContentContainer) {
         lightboxModal.classList.remove('open');
       }
     });
   }
 
-  document.querySelectorAll('.news-image-frame, .vairamuthu-frame, .nptel-avatar').forEach(frame => {
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('open')) {
+      lightboxModal.classList.remove('open');
+    }
+  });
+
+  document.querySelectorAll('.news-image-frame, .vairamuthu-frame, .nptel-avatar, .masthead-banner-img').forEach(frame => {
     frame.addEventListener('click', (e) => {
       let img = frame.tagName === 'IMG' ? frame : frame.querySelector('img');
       let caption = frame.querySelector ? frame.querySelector('.news-caption') : null;
       if (img) {
-        openLightbox(img.src, caption ? caption.textContent.trim() : (img.alt || 'Vaigai College Publication Photo'));
+        openLightbox(img.src, caption ? caption.textContent.trim() : (img.alt || 'Vaigai College Publication Photo'), frame);
       }
     });
   });

@@ -4911,12 +4911,53 @@
   <!-- Modal Backdrop -->
   <div class="modal-backdrop" id="modal-backdrop"></div>
 
-  <!-- Image Lightbox Modal for High-Resolution Inspection -->
-  <div class="lightbox-modal" id="lightbox-modal">
-    <button class="lightbox-close" id="lightbox-close">×</button>
-    <div class="lightbox-img-wrapper">
-      <img src="" alt="" id="lightbox-img" class="lightbox-img">
-      <p id="lightbox-caption" class="lightbox-caption"></p>
+  <!-- Fullscreen Poster & Event Broadside Viewer -->
+  <div class="lightbox-modal" id="lightbox-modal" data-view="poster">
+    <!-- Top Floating Navigation & Action Bar -->
+    <div class="lightbox-top-bar">
+      <div class="lightbox-event-tag" id="lightbox-event-tag">
+        <span class="lightbox-tag-dot"></span>
+        <span id="lightbox-tag-text">VAIGAI ARCHIVAL POSTER</span>
+      </div>
+      <div class="lightbox-actions">
+        <button id="lightbox-toggle-info" class="lightbox-btn info-toggle" title="Toggle Event Details & Story">
+          <span class="btn-icon">ℹ️</span>
+          <span class="btn-text" id="lightbox-info-btn-label">Event Details</span>
+        </button>
+        <button id="lightbox-jump-page" class="lightbox-btn jump-btn" title="Jump to Page in Publication">
+          <span class="btn-icon">📖</span>
+          <span class="btn-text">View in Page</span>
+        </button>
+        <button class="lightbox-close" id="lightbox-close" title="Close Fullscreen (Esc)">×</button>
+      </div>
+    </div>
+
+    <!-- Main Viewport Area: Split/Overlay between Scaled Poster and Event Details -->
+    <div class="lightbox-content-container" id="lightbox-content-container">
+      <!-- Scaled Poster Frame (Scaled for Fullscreen by default) -->
+      <div class="lightbox-poster-area" id="lightbox-poster-area">
+        <div class="lightbox-img-frame" id="lightbox-img-frame" title="Click to toggle Event Details">
+          <img src="" alt="" id="lightbox-img" class="lightbox-img">
+        </div>
+        <div class="lightbox-caption-bar" id="lightbox-caption-bar">
+          <p id="lightbox-caption" class="lightbox-caption"></p>
+          <button class="lightbox-caption-hint" id="lightbox-caption-hint" type="button">
+            <span>ℹ️ Click to read the full event story & details</span>
+            <span>▾</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Semi-Transparent Frosted Editorial Story Panel -->
+      <div class="lightbox-info-panel" id="lightbox-info-panel">
+        <div class="lightbox-info-header">
+          <span class="info-kicker" id="lightbox-info-dept">DEPARTMENT EVENT</span>
+          <span class="info-date-badge" id="lightbox-info-date">JULY – AUGUST 2026</span>
+        </div>
+        <h2 class="lightbox-info-headline" id="lightbox-info-title">Event Title</h2>
+        <div class="lightbox-info-byline" id="lightbox-info-byline"></div>
+        <div class="lightbox-info-body" id="lightbox-info-body"></div>
+      </div>
     </div>
   </div>
 
