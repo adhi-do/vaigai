@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalBackdrop = document.getElementById('modal-backdrop');
   
   const btnToggleThumbs = document.getElementById('btn-toggle-thumbs');
-  const thumbnailStrip = document.getElementById('thumbnail-strip');
+  const thumbnailStrip = document.getElementById('thumbnail-strip') || document.getElementById('thumb-bar-drawer');
   
   const btnAudio = document.getElementById('btn-audio');
   const audioIcon = document.getElementById('audio-icon');
@@ -165,23 +165,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Dynamic Dimension Calculator (Heyzine Proportional Sizing & Android Optimized) ---
+  // --- Dynamic Dimension Calculator (Screen Filling & Viewport Maximized) ---
   function getBookDimensions() {
     const isMobile = window.innerWidth < 1024;
     
     if (isMobile) {
-      // Mobile Single Page Portrait (Android & iPhone Touchscreen Optimized)
-      const availW = window.innerWidth - 16;
-      const availH = window.innerHeight - 88; // Space between 44px top navbar and 40px bottom dock
+      // Mobile Single Page Portrait (Fills mobile viewport snugly)
+      const availW = window.innerWidth - 8;
+      const availH = window.innerHeight - 84; // Space between 44px top navbar and 40px bottom dock
       
-      // Target width fills ~96% of screen width (capped at 520px)
-      let targetW = Math.min(availW, 520);
-      
-      // Classic magazine ratio ~ 1 : 1.414 (A4)
+      // Target width fills ~98% of available mobile width
+      let targetW = Math.floor(availW * 0.98);
       let targetH = Math.floor(targetW * 1.414);
-      // Ensure comfortable vertical clearance so top and bottom edges are never clipped!
-      if (targetH > Math.floor(availH * 0.90)) {
-        targetH = Math.floor(availH * 0.90);
+      
+      if (targetH > Math.floor(availH * 0.97)) {
+        targetH = Math.floor(availH * 0.97);
         targetW = Math.floor(targetH / 1.414);
       }
       
@@ -191,24 +189,24 @@ document.addEventListener('DOMContentLoaded', () => {
         isPortrait: true 
       };
     } else {
-      // Desktop Two-Page Spread (Heyzine Proportions)
-      const availW = window.innerWidth - 60; // 30px breathing space on each side
-      const availH = window.innerHeight - 96; // Space between navbar and bottom dock
+      // Desktop Two-Page Spread (Fills viewport snugly without dead space)
+      const availW = window.innerWidth - 24; // Minimal side clearance for nav arrows
+      const availH = window.innerHeight - 86; // Space between top navbar and bottom dock
       
-      // Target height: 86% of availH leaves ~35px-45px vertical clearance so the top and curling corners are NEVER cut!
-      let targetH = Math.min(Math.floor(availH * 0.86), 740);
-      // Classic magazine width-to-height ratio 1 : 1.38
-      let pageW = Math.floor(targetH / 1.38);
+      // Target height utilizes 97% of availH to eliminate dead vertical space!
+      let targetH = Math.floor(availH * 0.97);
+      // Classic magazine ratio 1 : 1.414 (A4)
+      let pageW = Math.floor(targetH / 1.414);
       
       // Ensure spread fits width
-      if (pageW * 2 > availW * 0.94) {
-        pageW = Math.floor((availW * 0.94) / 2);
-        targetH = Math.floor(pageW * 1.38);
+      if (pageW * 2 > availW * 0.97) {
+        pageW = Math.floor((availW * 0.97) / 2);
+        targetH = Math.floor(pageW * 1.414);
       }
       
       return { 
-        width: Math.max(pageW, 320), 
-        height: Math.max(targetH, 500), 
+        width: Math.max(pageW, 360), 
+        height: Math.max(targetH, 520), 
         isPortrait: false 
       };
     }
@@ -265,9 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
         height: height,
         size: 'fixed', // 'fixed' ensures crisp pixel alignment and prevents DOM rendering collapse
         minWidth: 280,
-        maxWidth: 750,
+        maxWidth: 1600,
         minHeight: 400,
-        maxHeight: 1050,
+        maxHeight: 2200,
         maxShadowOpacity: 0.5,
         showCover: true,
         mobileScrollSupport: true,
@@ -488,13 +486,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  document.querySelectorAll('.thumb-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const p = parseInt(card.dataset.page, 10);
-      goToPage(p);
-      thumbnailStrip.classList.remove('open');
-    });
-  });
+  const thumbTrack = document.getElementById('thumb-track');
+  if (thumbTrack && thumbTrack.children.length === 0) {
+    for (let i = 1; i <= totalPages; i++) {
+      const card = document.createElement('div');
+      card.className = 'thumb-card';
+      card.dataset.page = i;
+      card.innerHTML = `<span class="thumb-page-num">P.${i}</span>`;
+      card.addEventListener('click', () => {
+        goToPage(i);
+        if (thumbnailStrip) thumbnailStrip.classList.remove('open');
+      });
+      thumbTrack.appendChild(card);
+    }
+  }
+
 
   // --- Zoom & Pan Engine for Flipbook ---
   function updateZoom() {
@@ -571,8 +577,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function extractEventData(sourceFrame) {
     if (!sourceFrame) return null;
-    const container = sourceFrame.closest('.page') || sourceFrame.closest('.gazette-section') || sourceFrame.closest('article');
+    let container = sourceFrame.closest('.page') || sourceFrame.closest('.gazette-section') || sourceFrame.closest('article');
     if (!container) return null;
+
+    // If source is a poster page or spread page without extensive text, check the facing page for full event story
+    if (container.classList && (container.classList.contains('poster-page') || container.classList.contains('spread-page'))) {
+      const pageId = container.id;
+      if (pageId && pageId.startsWith('p')) {
+        const pNum = parseInt(pageId.substring(1), 10);
+        const facingNum = (pNum % 2 === 0) ? (pNum + 1) : (pNum - 1);
+        const facingPage = document.getElementById(`p${facingNum}`);
+        if (facingPage && facingPage.querySelector('.headline-lead, .headline-section, .editorial-cols')) {
+          container = facingPage;
+        }
+      }
+    }
 
     let pageNum = container.dataset.page;
     if (!pageNum && container.id) {
@@ -717,6 +736,30 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxModal.classList.add('open');
   }
 
+  // Lightbox Image Rotation Support (e.g. for vertical mobile screen users)
+  const lightboxRotateBtn = document.getElementById('lightbox-rotate-btn');
+  let lightboxRotationDeg = 0;
+  if (lightboxRotateBtn) {
+    lightboxRotateBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      lightboxRotationDeg = (lightboxRotationDeg + 90) % 360;
+      if (lightboxImg) {
+        lightboxImg.style.transform = `rotate(${lightboxRotationDeg}deg)`;
+      }
+    });
+  }
+
+  // Mobile Spread Container Rotation Toggle
+  document.querySelectorAll('.mobile-spread-rotate-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const container = btn.closest('.spread-container');
+      if (container) {
+        container.classList.toggle('mobile-rotated');
+      }
+    });
+  });
+
   if (lightboxToggleInfo) {
     lightboxToggleInfo.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -768,12 +811,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.querySelectorAll('.news-image-frame, .vairamuthu-frame, .nptel-avatar, .masthead-banner-img').forEach(frame => {
+  // Open Lightbox for all images, fullsize posters, and two-page panoramic spreads
+  document.querySelectorAll('.news-image-frame, .vairamuthu-frame, .nptel-avatar, .masthead-banner-img, .poster-full-frame, .spread-container').forEach(frame => {
     frame.addEventListener('click', (e) => {
+      if (e.target.closest('.mobile-spread-rotate-btn')) return;
+
       let img = frame.tagName === 'IMG' ? frame : frame.querySelector('img');
-      let caption = frame.querySelector ? frame.querySelector('.news-caption') : null;
-      if (img) {
-        openLightbox(img.src, caption ? caption.textContent.trim() : (img.alt || 'Vaigai College Publication Photo'), frame);
+      let caption = frame.getAttribute('data-caption') || 
+                    (frame.querySelector ? frame.querySelector('.news-caption, .poster-hover-banner, .spread-caption-overlay') : null);
+      let captionText = typeof caption === 'string' ? caption : (caption ? caption.textContent.trim() : (img ? img.alt : 'Vaigai Archival Broadside'));
+      
+      let imgSrc = frame.getAttribute('data-img-src') || frame.getAttribute('data-spread-src') || (img ? img.src : '');
+      if (imgSrc) {
+        lightboxRotationDeg = 0;
+        if (lightboxImg) lightboxImg.style.transform = '';
+        openLightbox(imgSrc, captionText, frame);
       }
     });
   });

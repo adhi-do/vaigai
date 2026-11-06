@@ -68,8 +68,8 @@ html, body {
     radial-gradient(circle at 15% 15%, rgba(184, 134, 11, 0.08), transparent 45%);
   color: var(--text-dark);
   font-family: var(--font-body);
-  line-height: 1.5;
-  font-size: 13.5px;
+  line-height: 1.58;
+  font-size: 15.5px;
 }
 
 /* --- Institutional College Crest Framing --- */
@@ -227,7 +227,6 @@ html, body {
 }
 
 /* --- Main Layout Wrapper --- */
-/* Breathing room so the book top/bottom and shadow are never cut off */
 .main-wrapper {
   position: relative;
   width: 100vw;
@@ -236,10 +235,12 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: visible;
-  padding: 10px 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* --- Screen-Filling Flipbook Viewport (Heyzine Style) --- */
+/* --- Screen-Filling Flipbook Viewport (Zero Dead Margins) --- */
 #flipbook-container {
   position: relative;
   width: 100%;
@@ -248,6 +249,7 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: visible;
+  padding: 0;
 }
 
 .flipbook-viewport {
@@ -378,10 +380,10 @@ html, body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid var(--text-headline);
-  padding-bottom: 3px;
+  padding-bottom: 4px;
   margin-bottom: 8px;
   font-family: var(--font-display);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   letter-spacing: 1.5px;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -396,12 +398,12 @@ html, body {
 .page-footer {
   margin-top: 8px;
   border-top: 1px solid var(--paper-border);
-  padding-top: 3px;
+  padding-top: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   flex-shrink: 0;
 }
@@ -409,7 +411,7 @@ html, body {
 .page-num {
   font-family: var(--font-serif);
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   color: var(--text-headline);
 }
 
@@ -526,32 +528,32 @@ html, body {
 /* Editorial Headlines */
 .headline-lead {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
-  line-height: 1.18;
+  font-size: 1.55rem;
+  line-height: 1.2;
   font-weight: 800;
   color: var(--text-headline);
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   letter-spacing: -0.2px;
 }
 
 .headline-sub {
   font-family: var(--font-serif);
-  font-size: 0.88rem;
+  font-size: 1.02rem;
   font-style: italic;
   color: var(--text-muted);
-  line-height: 1.35;
+  line-height: 1.4;
   margin-bottom: 8px;
 }
 
 .headline-section {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.22rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-headline);
   border-bottom: 2px solid var(--accent);
-  padding-bottom: 3px;
+  padding-bottom: 4px;
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -559,10 +561,10 @@ html, body {
 }
 
 .headline-tag {
-  font-size: 0.62rem;
+  font-size: 0.74rem;
   background: var(--accent);
   color: #fff;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: 3px;
   letter-spacing: 1px;
 }
@@ -571,12 +573,12 @@ html, body {
 .byline-bar {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   border-bottom: 1px dashed var(--paper-border);
-  padding-bottom: 4px;
+  padding-bottom: 5px;
   margin-bottom: 8px;
 }
 
@@ -588,12 +590,12 @@ html, body {
 /* Multi-Column Layout */
 .editorial-cols {
   column-count: 2;
-  column-gap: 14px;
+  column-gap: 16px;
   column-rule: 1px solid var(--paper-border);
   text-align: justify;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  margin-bottom: 6px;
+  font-size: 0.96rem;
+  line-height: 1.62;
+  margin-bottom: 8px;
 }
 
 /* Drop Caps */
@@ -669,10 +671,10 @@ html, body {
 
 .news-caption {
   font-family: var(--font-sans);
-  font-size: 0.65rem;
+  font-size: 0.80rem;
   color: var(--text-muted);
-  padding: 3px 6px 1px;
-  line-height: 1.3;
+  padding: 4px 8px 3px;
+  line-height: 1.35;
   border-top: 1px solid #f0ede6;
   background: #fefefe;
   display: flex;
@@ -703,13 +705,13 @@ html, body {
 .pull-quote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 1.08rem;
+  line-height: 1.5;
   color: var(--primary);
   border-left: 3px solid var(--accent);
   border-right: 3px solid var(--accent);
-  padding: 6px 14px;
-  margin: 8px 0;
+  padding: 8px 16px;
+  margin: 10px 0;
   text-align: center;
   background: rgba(212, 175, 55, 0.06);
 }
@@ -721,22 +723,25 @@ html, body {
   padding: 12px 14px;
   border-radius: 4px;
   margin: 8px 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .editorial-item {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 6px;
-  font-size: 0.8rem;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
 .editorial-letter {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--accent);
-  min-width: 20px;
+  min-width: 22px;
   line-height: 1;
 }
 
@@ -773,7 +778,7 @@ html, body {
 
 .nptel-name {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.84rem;
   font-weight: 700;
   color: var(--text-headline);
   line-height: 1.2;
@@ -781,24 +786,24 @@ html, body {
 
 .nptel-role {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
+  font-size: 0.74rem;
   color: var(--accent);
   font-weight: 600;
 }
 
 .nptel-course {
   font-family: var(--font-body);
-  font-size: 0.62rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   margin-top: 3px;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 .nptel-badge {
   margin-top: 4px;
-  font-size: 0.58rem;
+  font-size: 0.70rem;
   font-weight: 700;
-  padding: 1px 6px;
+  padding: 2px 7px;
   border-radius: 8px;
   background: #fef3c7;
   color: #92400e;
@@ -1816,4 +1821,275 @@ html, body {
     height: 30px;
     font-size: 1rem;
   }
+}
+
+
+/* ==========================================================================
+   FULL-PAGE ARCHIVAL POSTERS & TWO-PAGE PANORAMIC SPREADS
+   ========================================================================== */
+
+/* --- Full-Page Archival Posters (Edge-to-Edge / Broadside Display) --- */
+.page.poster-page {
+  background-color: #0b0f15 !important;
+  background-image: none !important;
+}
+
+.poster-page-inner {
+  padding: 8px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #0d1219 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+.poster-full-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #090c10;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.poster-full-frame:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 28px rgba(212, 175, 55, 0.25);
+}
+
+.poster-full-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Fullsize poster matches whole page perfectly */
+  display: block;
+  background: #080b0f;
+  transition: transform 0.28s ease;
+}
+
+.poster-full-frame:hover .poster-full-img {
+  transform: scale(1.02);
+}
+
+.poster-hover-banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 14px;
+  background: linear-gradient(to top, rgba(11, 15, 22, 0.96) 0%, rgba(11, 15, 22, 0.75) 60%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--accent-light);
+  letter-spacing: 0.8px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.poster-badge {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.poster-action-hint {
+  font-size: 0.76rem;
+  color: #cbd5e1;
+}
+
+/* --- Two-Page Landscape Centerfold Panoramic Spreads --- */
+.page.spread-page {
+  background-color: #090c10 !important;
+  background-image: none !important;
+}
+
+.spread-page-inner {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background: #090c10 !important;
+  box-sizing: border-box !important;
+}
+
+.spread-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  background: #090c10;
+}
+
+/* Left Page displays 0% to 50% of the panoramic image */
+.spread-left-half .spread-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+
+/* Right Page displays 50% to 100% of the panoramic image */
+.spread-right-half .spread-img {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+
+.spread-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 16px 22px;
+  background: linear-gradient(to top, rgba(9, 12, 16, 0.96) 0%, rgba(9, 12, 16, 0.7) 60%, transparent 100%);
+  z-index: 5;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.spread-overlay-left {
+  left: 0;
+  right: 0;
+}
+
+.spread-overlay-right {
+  left: 0;
+  right: 0;
+  text-align: right;
+}
+
+.spread-tag {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent-light);
+  text-transform: uppercase;
+}
+
+.spread-title {
+  font-family: var(--font-display);
+  font-size: 1.48rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 3px 0;
+  line-height: 1.2;
+}
+
+.spread-sub {
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  color: #e2e8f0;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.spread-meta-right {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Mobile Rotation for Vertical Screen */
+.mobile-spread-rotate-btn {
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(14, 18, 26, 0.92);
+  border: 1px solid var(--accent);
+  color: var(--accent-light);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.mobile-spread-rotate-btn:hover {
+  background: var(--accent);
+  color: #0b0f15;
+  transform: scale(1.05);
+}
+
+@media (max-width: 1023px) {
+  .mobile-spread-rotate-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* Full vertical rotation on mobile portrait screens */
+  .spread-container.mobile-rotated {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    background: #000000 !important;
+  }
+
+  .spread-container.mobile-rotated .spread-img {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    width: 100vh !important;
+    height: 100vw !important;
+    max-width: none !important;
+    max-height: none !important;
+    transform: translate(-50%, -50%) rotate(90deg) !important;
+    object-fit: contain !important;
+  }
+
+  .spread-container.mobile-rotated .spread-caption-overlay {
+    display: none;
+  }
+
+  .spread-container.mobile-rotated .mobile-spread-rotate-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--accent);
+    color: #0b0f15;
+  }
+}
+
+/* Lightbox Modal Image Rotation Support */
+.lightbox-img {
+  transition: transform 0.3s ease;
 }
