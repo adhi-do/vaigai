@@ -2048,3 +2048,28 @@ html, body {
 .lightbox-img {
   transition: transform 0.3s ease;
 }
+
+/* Certificate Showcase & Verified Document Styling */
+.cert-display-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cert-display-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14) !important;
+}
+
+.cert-pdf-btn {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.cert-pdf-btn:hover {
+  background: var(--accent) !important;
+  color: #0b0f16 !important;
+  box-shadow: 0 3px 10px rgba(184, 134, 11, 0.35) !important;
+  transform: translateY(-1px);
+}
+

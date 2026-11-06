@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 generate_flipbook.py
-Generates the complete 52-page VAIGAI'S IKIGAI Interactive Flipbook & Gazette:
+Generates the complete 54-page VAIGAI'S IKIGAI Interactive Flipbook & Gazette:
 1. Maximized viewport filling (eliminates dead gaps between flipbook-viewport and flipbook)
 2. Full-page posters (edge-to-edge / broadside) with complete descriptions moved to facing pages
 3. Two-page landscape panoramic spreads (MESA Inaugural Assembly & Habits of High Performers Assembly)
@@ -13,7 +13,7 @@ Generates the complete 52-page VAIGAI'S IKIGAI Interactive Flipbook & Gazette:
 import os
 import re
 
-print("Starting generation of 52-page publication...")
+print("Starting generation of 54-page publication...")
 
 pages = {}
 
@@ -1532,6 +1532,18 @@ add_page(
                 </tr>
             </thead>
             <tbody>
+                <tr style="border-bottom: 1px solid var(--paper-border); background: rgba(212, 175, 55, 0.08);">
+                    <td style="padding: 4px 6px;"><strong>Dr. R. Mahendran</strong></td>
+                    <td style="padding: 4px 6px;"><span class="badge" style="background: var(--accent); color: #fff; font-size: 0.7rem; padding: 1px 4px; border-radius: 2px;">PHYSICS</span></td>
+                    <td style="padding: 4px 6px;">Advanced Materials for Sustainable Energy (AMSET-26)</td>
+                    <td style="padding: 4px 6px;">AAA CET (Autonomous)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--paper-border); background: rgba(212, 175, 55, 0.08);">
+                    <td style="padding: 4px 6px;"><strong>Dr. R. Mahendran</strong></td>
+                    <td style="padding: 4px 6px;"><span class="badge" style="background: var(--accent); color: #fff; font-size: 0.7rem; padding: 1px 4px; border-radius: 2px;">PHYSICS</span></td>
+                    <td style="padding: 4px 6px;">AI & Smart Materials in Manufacturing</td>
+                    <td style="padding: 4px 6px;">AICTE ATAL / Saveetha</td>
+                </tr>
                 <tr style="border-bottom: 1px solid var(--paper-border);">
                     <td style="padding: 4px 6px;"><strong>Dr. R. Sivaranjani</strong></td>
                     <td style="padding: 4px 6px;">ECE</td>
@@ -1580,7 +1592,7 @@ add_page(
 
     <div class="editorial-card" style="margin-top: 6px;">
         <div style="font-size: 0.86rem; color: var(--text-dark);">
-            ✦ Continuous Professional Development (CPD) ensures our educators remain abreast of international technological transformations, directly enriching student laboratory instruction.
+            ✦ <strong>Faculty Spotlight:</strong> Turn to <strong>Pages 50 & 51</strong> to view the verified autonomous & AICTE ATAL certificates awarded to Dr. R. Mahendran, Associate Professor of Physics.
         </div>
     </div>
     """,
@@ -1647,10 +1659,123 @@ add_page(
 )
 
 # ==============================================================================
-# SPREAD 25: PAGE 50 & PAGE 51 — COLOPHON & INSTITUTIONAL VISION BROADSIDE
+# SPREAD 25: PAGE 50 & PAGE 51 — FACULTY HONOURS & NATIONAL CERTIFICATIONS
 # ==============================================================================
 add_page(
     50, "standard",
+    "FACULTY RESEARCH & DEVELOPMENT", "AMSET–26 CERTIFICATION",
+    """
+    <div class="headline-section">
+        <span>FACULTY DEVELOPMENT EXCELLENCE</span>
+        <span class="headline-tag">17–22 AUGUST 2026</span>
+    </div>
+    <h2 class="headline-lead">DR. R. MAHENDRAN AWARDED PARTICIPATION CERTIFICATE AT AAA CET 6-DAY AMSET-2026 FDP</h2>
+    <p class="headline-sub">State-Level Faculty Development Programme on "Advanced Materials for Sustainable Energy and Smart Technologies" Organised by Department of Physics, AAA CET</p>
+
+    <div class="cert-display-card" style="margin: 8px 0; background: #fffcf8; border: 1.5px solid var(--accent); border-radius: 6px; padding: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+        <div class="cert-img-frame" style="position: relative; border-radius: 4px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.4); background: #0b0f16; text-align: center;">
+            <a href="AMSET - 26 Participation Certificate Dr. R. Mahendran.pdf" target="_blank" title="Click to view full original PDF certificate" style="display: block;">
+                <img src="cert_amset_dr_r_mahendran.png" alt="AMSET-26 Participation Certificate - Dr. R. Mahendran" style="width: 100%; height: auto; max-height: 275px; object-fit: contain; display: block; margin: 0 auto; pointer-events: auto;">
+            </a>
+            <div style="position: absolute; top: 6px; right: 6px; background: rgba(14, 18, 26, 0.88); color: var(--accent-light); border: 1px solid var(--accent); border-radius: 12px; padding: 2px 8px; font-family: var(--font-sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.5px; pointer-events: none;">
+                ✦ VERIFIED FDP CERTIFICATE
+            </div>
+        </div>
+    </div>
+
+    <div class="editorial-card" style="margin: 6px 0; padding: 8px 10px; font-size: 0.82rem; line-height: 1.55;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; margin-bottom: 6px;">
+            <div>
+                <strong style="color: var(--accent);">Faculty Member:</strong><br>
+                Dr. R. Mahendran, Associate Professor of Physics
+            </div>
+            <div>
+                <strong style="color: var(--accent);">Host Institution:</strong><br>
+                AAA College of Engg. & Technology (Autonomous)
+            </div>
+            <div>
+                <strong style="color: var(--accent);">Academic Scope:</strong><br>
+                Sustainable Energy Materials & Smart Devices
+            </div>
+            <div>
+                <strong style="color: var(--accent);">Signatories:</strong><br>
+                Dr. M. Sekar (Principal), Dr. R. Anitha, Dr. K. Anand
+            </div>
+        </div>
+        <div style="border-top: 1px dashed var(--paper-border); padding-top: 6px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.78rem; color: var(--text-muted);">
+                ✦ Autonomous Institution Accredited FDP • Sivakasi, Tamil Nadu
+            </span>
+            <a href="AMSET - 26 Participation Certificate Dr. R. Mahendran.pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-btn" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(212, 175, 55, 0.18); border: 1.5px solid var(--accent); color: var(--primary); padding: 4px 10px; border-radius: 4px; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; text-decoration: none; cursor: pointer;">
+                <span>📄</span>
+                <span>View Original PDF Certificate ↗</span>
+            </a>
+        </div>
+    </div>
+    """,
+    "Faculty Honours — AMSET-26 FDP Certificate", "Dr. R. Mahendran • AAA College of Engineering & Technology"
+)
+
+add_page(
+    51, "standard",
+    "CENTRAL GOVERNMENT & AICTE ATAL ACADEMY", "NATIONAL FDP CERTIFICATION",
+    """
+    <div class="headline-section">
+        <span>NATIONAL FACULTY DEVELOPMENT PROGRAMME</span>
+        <span class="headline-tag">AICTE ATAL ACADEMY</span>
+    </div>
+    <h2 class="headline-lead">DR. R. MAHENDRAN RECEIVES NATIONAL ATAL CERTIFICATE IN AI & SMART MATERIALS</h2>
+    <p class="headline-sub">AICTE Training And Learning (ATAL) Academy FDP on "Future-Ready Manufacturing: The Synergy of AI and Smart Materials" Hosted at Saveetha Institute</p>
+
+    <div class="cert-display-card" style="margin: 8px 0; background: #fffcf8; border: 1.5px solid var(--accent); border-radius: 6px; padding: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.08);">
+        <div class="cert-img-frame" style="position: relative; border-radius: 4px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.4); background: #0b0f16; text-align: center;">
+            <a href="certificate(1).pdf" target="_blank" title="Click to view full original PDF certificate" style="display: block;">
+                <img src="cert_atal_dr_r_mahendran.png" alt="AICTE ATAL Academy Certificate - Dr. R. Mahendran" style="width: 100%; height: auto; max-height: 275px; object-fit: contain; display: block; margin: 0 auto; pointer-events: auto;">
+            </a>
+            <div style="position: absolute; top: 6px; right: 6px; background: rgba(14, 18, 26, 0.88); color: var(--accent-light); border: 1px solid var(--accent); border-radius: 12px; padding: 2px 8px; font-family: var(--font-sans); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.5px; pointer-events: none;">
+                ✦ AICTE ATAL RECOGNITION
+            </div>
+        </div>
+    </div>
+
+    <div class="editorial-card" style="margin: 6px 0; padding: 8px 10px; font-size: 0.82rem; line-height: 1.55;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; margin-bottom: 6px;">
+            <div>
+                <strong style="color: var(--accent);">Faculty Member:</strong><br>
+                Dr. R. Mahendran, Associate Professor of Physics
+            </div>
+            <div>
+                <strong style="color: var(--accent);">Sanctioning Body:</strong><br>
+                AICTE New Delhi (ATAL Academy)
+            </div>
+            <div>
+                <strong style="color: var(--accent);">Host University:</strong><br>
+                Saveetha Inst. of Medical & Technical Sciences
+            </div>
+            <div>
+                <strong style="color: var(--accent);">Certificate Reference:</strong><br>
+                <code style="background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px; font-size: 0.76rem;">ATAL/2025/1755970665</code>
+            </div>
+        </div>
+        <div style="border-top: 1px dashed var(--paper-border); padding-top: 6px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.78rem; color: var(--text-muted);">
+                ✦ Government of India Ministry of Education Initiative
+            </span>
+            <a href="certificate(1).pdf" target="_blank" rel="noopener noreferrer" class="cert-pdf-btn" style="display: inline-flex; align-items: center; gap: 5px; background: rgba(212, 175, 55, 0.18); border: 1.5px solid var(--accent); color: var(--primary); padding: 4px 10px; border-radius: 4px; font-family: var(--font-sans); font-size: 0.76rem; font-weight: 700; text-decoration: none; cursor: pointer;">
+                <span>📄</span>
+                <span>View Original PDF Certificate ↗</span>
+            </a>
+        </div>
+    </div>
+    """,
+    "AICTE ATAL National FDP Certificate", "Dr. R. Mahendran • Saveetha Institute & AICTE New Delhi"
+)
+
+# ==============================================================================
+# SPREAD 26: PAGE 52 & PAGE 53 — COLOPHON & INSTITUTIONAL VISION BROADSIDE
+# ==============================================================================
+add_page(
+    52, "standard",
     "VAIGAI COLLEGE OF ENGINEERING", "COLOPHON & ACKNOWLEDGEMENTS",
     """
     <div style="text-align: center; margin-bottom: 10px;">
@@ -1695,7 +1820,7 @@ add_page(
 )
 
 add_page(
-    51, "standard",
+    53, "standard",
     "VAIGAI COLLEGE OF ENGINEERING", "INSTITUTIONAL VISION BROADSIDE",
     """
     <div style="text-align: center; margin: 15px 0 10px;">
@@ -1738,10 +1863,10 @@ add_page(
 )
 
 # ==============================================================================
-# PAGE 52: BACK COVER
+# PAGE 54: BACK COVER
 # ==============================================================================
 add_page(
-    52, "cover-back",
+    54, "cover-back",
     "VAIGAI COLLEGE OF ENGINEERING", "BACK COVER",
     """
     <div style="text-align: center; margin: 30px 0 20px;">
@@ -2085,5 +2210,5 @@ full_html = f"""<!DOCTYPE html>
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(full_html)
 
-print("Generated index.html successfully with 52 pages!")
+print("Generated index.html successfully with 54 pages!")
 

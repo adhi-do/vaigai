@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- State Variables ---
   let pageFlip = null;
   let currentPage = 1;
-  const totalPages = (flipbookElement ? flipbookElement.querySelectorAll('.page').length : 0) || 52;
+  const totalPages = (flipbookElement ? flipbookElement.querySelectorAll('.page').length : 0) || 54;
   let currentMode = 'flipbook'; // 'flipbook' | 'gazette'
   let isMuted = localStorage.getItem('vce_audio_muted') === 'true';
   let zoomScale = 1.0;
