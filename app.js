@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- State Variables ---
   let pageFlip = null;
   let currentPage = 1;
-  const totalPages = 38;
+  const totalPages = (flipbookElement ? flipbookElement.querySelectorAll('.page').length : 0) || 52;
   let currentMode = 'flipbook'; // 'flipbook' | 'gazette'
   let isMuted = localStorage.getItem('vce_audio_muted') === 'true';
   let zoomScale = 1.0;
@@ -214,8 +214,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Trigger Editorial Animation on Page Turn ---
   function triggerPageAnimation(pageNum) {
+    if (currentMode === 'flipbook') {
+      window.scrollTo(0, 0);
+    }
     const allPages = document.querySelectorAll('.page');
-    allPages.forEach(p => p.classList.remove('page-active'));
+    allPages.forEach(p => {
+      p.classList.remove('page-active');
+      const content = p.querySelector('.page-content');
+      if (content) content.scrollTop = 0;
+    });
 
     const isSpread = pageFlip && pageFlip.getOrientation() === 'landscape' && pageNum > 1 && pageNum < totalPages;
     if (isSpread) {
@@ -299,6 +306,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Synchronize UI Elements ---
   function updateUI(pageNum) {
+    if (currentMode === 'flipbook') {
+      window.scrollTo(0, 0);
+    }
+
     if (pageIndicator) {
       if (pageFlip && pageFlip.getOrientation() === 'landscape' && pageNum > 1 && pageNum < totalPages) {
         const leftPage = (pageNum % 2 === 0) ? pageNum : pageNum - 1;
@@ -310,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (pageScrubber) {
+      pageScrubber.max = totalPages;
       pageScrubber.value = pageNum;
     }
 
@@ -322,7 +334,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const cardPage = parseInt(card.dataset.page, 10);
       if (cardPage === pageNum) {
         card.classList.add('active');
-        card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        // Only scroll the horizontal thumbnail track internally if the thumbnail drawer is open
+        // Never call card.scrollIntoView which causes the browser window to scroll down
+        if (thumbnailStrip && thumbnailStrip.classList.contains('open') && thumbTrack) {
+          const scrollLeft = card.offsetLeft - (thumbTrack.clientWidth / 2) + (card.clientWidth / 2);
+          thumbTrack.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
       } else {
         card.classList.remove('active');
       }
@@ -342,6 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function goToPage(targetPage) {
     targetPage = Math.max(1, Math.min(totalPages, targetPage));
     if (currentMode === 'flipbook' && pageFlip) {
+      window.scrollTo(0, 0);
       pageFlip.flip(targetPage - 1);
     } else {
       currentPage = targetPage;
@@ -811,24 +829,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Open Lightbox for all images, fullsize posters, and two-page panoramic spreads
-  document.querySelectorAll('.news-image-frame, .vairamuthu-frame, .nptel-avatar, .masthead-banner-img, .poster-full-frame, .spread-container').forEach(frame => {
-    frame.addEventListener('click', (e) => {
-      if (e.target.closest('.mobile-spread-rotate-btn')) return;
+  // Images act as seamless parts of the publication page — clicks turn pages without lightbox expansion
 
-      let img = frame.tagName === 'IMG' ? frame : frame.querySelector('img');
-      let caption = frame.getAttribute('data-caption') || 
-                    (frame.querySelector ? frame.querySelector('.news-caption, .poster-hover-banner, .spread-caption-overlay') : null);
-      let captionText = typeof caption === 'string' ? caption : (caption ? caption.textContent.trim() : (img ? img.alt : 'Vaigai Archival Broadside'));
-      
-      let imgSrc = frame.getAttribute('data-img-src') || frame.getAttribute('data-spread-src') || (img ? img.src : '');
-      if (imgSrc) {
-        lightboxRotationDeg = 0;
-        if (lightboxImg) lightboxImg.style.transform = '';
-        openLightbox(imgSrc, captionText, frame);
-      }
-    });
-  });
 
   // --- Audio Mute Toggle ---
   if (btnAudio) {

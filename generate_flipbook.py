@@ -415,10 +415,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image10.jpeg" data-caption="One-Week Workshop on Embedded Systems & IoT in Association with Caliber Virtual Technologies">
         <img src="word/media/image10.jpeg" alt="One-Week Workshop on Embedded Systems and IoT Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "IoT Workshop Broadside Poster", "Fullsize Archival Event Poster (image10)"
@@ -484,10 +480,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image13.jpeg" data-caption="Faculty Development Programme: IIC & You - Building an Innovation Culture">
         <img src="word/media/image13.jpeg" alt="FDC Poster: IIC & You" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "FDC Innovation Broadside Poster", "Fullsize Archival Event Poster (image13)"
@@ -544,10 +536,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image15.jpeg" data-caption="Campus-Wide Health Awareness & Preventive Lifestyle Programme Poster">
         <img src="word/media/image15.jpeg" alt="Health Awareness Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Health Awareness Broadside Poster", "Fullsize Archival Event Poster (image15)"
@@ -605,10 +593,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image20.jpeg" data-caption="Mega Blood Donation Camp: Over 50 Volunteers Register to Save Lives">
         <img src="word/media/image20.jpeg" alt="Blood Donation Camp Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Blood Donation Camp Broadside Poster", "Fullsize Archival Event Poster (image20)"
@@ -659,10 +643,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image21.jpeg" data-caption="Celebrating Social Responsibility and Service: Certificate Distribution Ceremony">
         <img src="word/media/image21.jpeg" alt="Donor Recognition Honors Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Blood Donor Honors Broadside Poster", "Fullsize Archival Event Poster (image21)"
@@ -713,10 +693,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image22.jpeg" data-caption="State-Level Online Quiz on HIV/STI Awareness Organized by Red Ribbon Club">
         <img src="word/media/image22.jpeg" alt="HIV/STI Quiz State Competition Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "HIV/STI Awareness Quiz Poster", "Fullsize Archival Event Poster (image22)"
@@ -776,10 +752,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image25.png" data-caption="Mass Anti-Drug Pledge: 250 Students Unite for a Healthy Future">
         <img src="word/media/image25.png" alt="Mass Anti-Drug Pledge Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Anti-Drug Campaign Broadside Poster", "Fullsize Archival Event Poster (image25)"
@@ -838,10 +810,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image28.jpeg" data-caption="Igniting Startup Dreams: Ms. Archana Veeravel Addresses III & IV Year Students">
         <img src="word/media/image28.jpeg" alt="Startup Dreams Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Igniting Startup Dreams Poster", "Fullsize Archival Event Poster (image28)"
@@ -895,10 +863,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image33.jpeg" data-caption="78th Independence Day Celebrated with Patriotic Splendor & Civic Pride">
         <img src="word/media/image33.jpeg" alt="78th Independence Day Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Independence Day Broadside Poster", "Fullsize Archival Event Poster (image33)"
@@ -951,10 +915,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image34.jpeg" data-caption="Anna University Rank Holders Honors — 2021–2025 Graduating Batch">
         <img src="word/media/image34.jpeg" alt="Anna University Rank Holders Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ ANNA UNIVERSITY RANK HOLDERS ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Anna University Rank Holders Poster", "Fullsize Archival Honors Poster (image34)"
@@ -1003,10 +963,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="poetry_competition_based_on_the_works_of_poet_Vairamuthu.jpeg" data-caption="Vaigai Scholars Sweep State Vairamuthu Speech Contest with 1st, 2nd & 3rd Prizes">
         <img src="poetry_competition_based_on_the_works_of_poet_Vairamuthu.jpeg" alt="State Vairamuthu Speech Contest Broadside" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ STATE ORATORY LAURELS ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "State Vairamuthu Contest Poster", "Fullsize Archival Contest Poster (Vairamuthu)"
@@ -1099,10 +1055,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image35.jpeg" data-caption="Expert Talk on Success is a Skill: Habits of High Performers by Dr. B. Sujatha">
         <img src="word/media/image35.jpeg" alt="Success is a Skill Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ FULL BROADSIDE POSTER ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Success is a Skill Broadside Poster", "Fullsize Archival Event Poster (image35)"
@@ -1316,10 +1268,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image38.jpeg" data-caption="On-Campus Recruitment Drive by Besant Technologies Pvt Ltd">
         <img src="word/media/image38.jpeg" alt="Besant Technologies On-Campus Drive Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ BESANT ON-CAMPUS DRIVE ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Besant Recruitment Drive Poster", "Fullsize Archival Drive Poster (image38)"
@@ -1331,10 +1279,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image39.jpeg" data-caption="16 Students Selected for Besant Job-Ready Internship & Placement Program (JRIP)">
         <img src="word/media/image39.jpeg" alt="16 Students Selected for Besant JRIP Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ 16 STUDENTS SELECTED BROADSIDE ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Besant 16 Selected Students Poster", "Fullsize Archival Selection Poster (image39)"
@@ -1387,10 +1331,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image42.jpeg" data-caption="Pooled Campus Recruitment Drive Jointly with Inovonz Engineerics">
         <img src="word/media/image42.jpeg" alt="Inovonz Engineerics Pooled Campus Drive Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ INOVONZ POOLED DRIVE BROADSIDE ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Inovonz Pooled Drive Poster", "Fullsize Archival Drive Poster (image42)"
@@ -1448,10 +1388,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image43.jpeg" data-caption="Off-Campus Recruitment Drive by Newrta Solutions Pvt Ltd">
         <img src="word/media/image43.jpeg" alt="Newrta Solutions Off-Campus Drive Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ NEWTRA OFF-CAMPUS DRIVE ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Newrta Off-Campus Drive Poster", "Fullsize Archival Drive Poster (image43)"
@@ -1466,10 +1402,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image44.jpeg" data-caption="Mr. S. Maadhesh Placed as Software Developer at Newrta Solutions">
         <img src="word/media/image44.jpeg" alt="Mr. S. Maadhesh Star Placement Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ STAR SOFTWARE PLACEMENT ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "Mr. S. Maadhesh Star Placement Poster", "Fullsize Archival Star Placement Poster (image44)"
@@ -1526,10 +1458,6 @@ add_page(
     """
     <div class="poster-full-frame" data-img-src="word/media/image46.jpeg" data-caption="TACT - Level 1: Intensive Placement Recruitment Competency Bootcamp Poster">
         <img src="word/media/image46.jpeg" alt="TACT - Level 1 Poster" class="poster-full-img">
-        <div class="poster-hover-banner">
-            <span class="poster-badge">★ TACT BOOTCAMP BROADSIDE ★</span>
-            <span class="poster-action-hint">🔍 Tap to inspect high-res</span>
-        </div>
     </div>
     """,
     "TACT Level 1 Bootcamp Poster", "Fullsize Archival Bootcamp Poster (image46)"
@@ -2071,7 +1999,7 @@ full_html = f"""<!DOCTYPE html>
   </footer>
 
   <!-- Thumbnail Bar Drawer -->
-  <div class="thumb-bar-drawer" id="thumb-bar-drawer">
+  <div class="thumbnail-strip-wrapper thumb-bar-drawer" id="thumb-bar-drawer">
     <div class="thumb-track" id="thumb-track"></div>
   </div>
 
